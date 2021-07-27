@@ -11,7 +11,7 @@ const PartyType = sequelize.define('PartyType', {
 });
 
 PartyType.associate = function(models) {
-    
+    PartyType.belongsToMany(models.Product, {through: 'product_partytype', foreignKey: 'partyTypeID'})
 }
 
 module.exports = PartyType;
