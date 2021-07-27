@@ -4,8 +4,8 @@ const sequelize = require("../config/sequelize");
 const User = sequelize.define('User', {
     email: {
         type: DataTypes.STRING,
-        allowNull: false
-        //unique: true
+        allowNull: false,
+        unique: true
     },
 
 	hash: {
@@ -21,7 +21,8 @@ const User = sequelize.define('User', {
     },
 
     nickname: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique: true
     },
 
     phone: {
@@ -33,8 +34,8 @@ const User = sequelize.define('User', {
     },
 
     CPF_CNPJ: {
-        type: DataTypes.STRING
-        //unique: true
+        type: DataTypes.STRING,
+        unique: true
     },
 
     photo: {
@@ -50,8 +51,12 @@ const User = sequelize.define('User', {
 });
 
 User.associate = function(models) {
-    // User.hasMany(models.Review);
-    // User.belongsToMany(models.Media, {through: 'watched', as: 'seen_list', foreignKey: 'userId'})
+    User.hasMany(models.Review);
+    User.hasMany(models.Question, {as: 'userMakesQuestion'});
+    User.hasMany(models.Question, {as: 'userAnswersQuestion'});
+    User.hasOne(models.ShopList);
+    User.hasMany(models.Product);
+    User.belongsToMany(models.Product, {through: 'favorite_list', foreignKey: 'userId'})
 }
 
 module.exports = User;
