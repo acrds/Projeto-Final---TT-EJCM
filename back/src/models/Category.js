@@ -11,7 +11,7 @@ const Category = sequelize.define('Category', {
 });
 
 Category.associate = function(models) {
-    
+    Category.hasMany(models.Product);
 }
 
 module.exports = Category;
