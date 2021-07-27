@@ -16,8 +16,9 @@ const Question = sequelize.define('Question', {
 });
 
 Question.associate = function(models) {
-    // Question.belongsTo(models.User);
-    // Question.belongsTo(models.Product);
+    Question.belongsTo(models.User, {as: 'userAnswersQuestion'});
+    Question.belongsTo(models.User, {as: 'userMakesQuestion'});
+    Question.belongsTo(models.Product)
 }
 
 module.exports = Question;
