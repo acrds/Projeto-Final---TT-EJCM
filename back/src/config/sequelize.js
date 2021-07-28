@@ -27,6 +27,7 @@ require('../models/Question');
 require('../models/Review');
 require('../models/Sale');
 require('../models/ShopList');
+require('../models/Product_ShopList');
 
 
 
