@@ -1,8 +1,15 @@
 {
   "dependencies": {
+    "crypto": "^1.0.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "handlebars": "^4.7.7",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.2",
     "node-dev": "^7.0.0",
+    "nodemailer": "^6.6.3",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
     "sequelize": "^6.6.5",
     "sqlite3": "^5.0.2"
   },
@@ -10,6 +17,7 @@
     "start": "node src/app.js",
     "dev": "node-dev --no-notify src/app.js",
     "migrate": "node src/database/migrate.js",
+    "keys": "node src/config/generateRSAKeyPair.js",
     "seed": "node src/database/seeders/Seeder"
   }
 }
