@@ -1,12 +1,21 @@
 const {response} = require ('express');
+const Product_ShopList = require('../models/Product_ShopList');
+const Sale = require('../models/Sale');
 const ShopList = require('../models/ShopList');
+const User = require('../models/User');
+const mailer = require('../config/mail').mailer;
+const readHtml = require("../config/mail").readHTMLFile;
+const path = require('path');
+const hbs = require("handlebars");
 
 const create = async(req,res) => {
     try{
-          const list = await ShopList.create(req.body);
-          return res.status(201).json({message: "Carrinho cadastrado com sucesso!", ShopList: list});
+          const shopList = await ShopList.create(req.body);
+          const user = await User.findByPk(req.body.userId);
+          await shopList.setUser(user);
+          return res.status(201).json({message: "Carrinho cadastrado com sucesso!", ShopList: shopList});
       }catch(err){
-          res.status(500).json({error: err, message: "Erro ao criar novo Carrinho."});
+          res.status(500).json({error: err + "!", message: "Erro ao criar novo Carrinho."});
       }
 };
 
@@ -56,10 +65,64 @@ const destroy = async(req,res) => {
     }
 };
 
+const concludeSale = async(req,res) => {
+    const {id} = req.params;
+    try {
+        const shopList = await ShopList.findByPk(id);
+        var sale = await Sale.findOne({where: {shopListId: shopList.id}});
+        const product_ShopLists = await Product_ShopList.findAll({where: {shopListId: id}});
+        const price = await shopList.price;
+        if (sale){
+            sale.update(
+                {payment_method: req.body.payment_method, 
+                    shipping: req.body.shipping
+                });
+            await shopList.update({price: 0.00}, {where: {id: id}});
+            product_ShopLists.forEach(Product_ShopList.destroy);
+        }
+        else{
+            const newSale = await Sale.create(
+                {payment_method: req.body.payment_method, 
+                shipping: req.body.shipping
+            });
+            await newSale.setShopList(shopList);
+            await shopList.update({price: 0.00}, {where: {id: req.body.id}});
+            product_ShopLists.forEach(Product_ShopList.destroy);
+            sale = newSale;
+        }
+        const pathTemplate = path.resolve(__dirname, '..', '..', 'templates');
+		const user = await User.findByPk(shopList.UserId);
+		readHtml(path.join(pathTemplate, "concludedSale.html"), (err,html)=>{
+			const template = hbs.compile(html);
+			const replacements = {
+				username: user.nickname,
+                cart: product_ShopLists,
+                subtotal: price,
+                shipping: sale.shipping,
+                price: sale.price
+			};
+			const htmlToSend = template(replacements);
+			const message = {
+				from: "testeejcm21@gmail.com",
+				to: user.email,
+				subject: "Comprovante do pedido n°" + sale.id,
+				html: htmlToSend
+			}
+			mailer.sendMail(message, (err) => {
+				console.log(err + "!");
+			});
+		});
+        return res.status(200).json(sale);
+    }catch(err){
+        return res.status(500).json(err + "!");
+    }
+};
+
 module.exports = {
     index,
     show,
     create,
     update,
-    destroy
+    destroy,
+    concludeSale
 };
