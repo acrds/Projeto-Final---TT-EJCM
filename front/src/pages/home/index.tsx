@@ -1,10 +1,18 @@
 import React from 'react';
-import { Text , View} from 'react-native';
+import { ScrollView, Text , View} from 'react-native';
 
 import { BackGroundHome,
          Cabecalho,
          Navegacao,
-         Label} from './styles';
+         Label,
+         ImgServico,
+         TextoServico,
+         H1,
+         ClassifiqueLocal,
+         Servidor,
+         FundoServico,
+         FundoProduto,
+         ImgProduto} from './styles';
 
 import { ContainerScroll, Opcoes, ImgCategoria, Titulo } from './styles';
 
@@ -14,33 +22,37 @@ export default function Home(){
 
 
     return(
-<>
+<ScrollView>
         
-            <Cabecalho>
-                
-            </Cabecalho>
+                <Cabecalho>
+                    
+                </Cabecalho>
 
 
-            <BackGroundHome>
+                <BackGroundHome>
 
-                <Categorias/>
-                <Label>Serviços</Label>
-                <Label>Produtos</Label>
-
-            </BackGroundHome>
+                    <Categorias/>
+                    <Label>Serviços</Label>
+                    <CardServico/>
+                    <Label>Produtos</Label>
+                    <CardProduto/>
+                </BackGroundHome>
         
         
         <Navegacao>
             
         </Navegacao>
+        
 
-
-</>
+</ScrollView>
         
     )};
 
 
+
+
 function Categorias (){
+
         return(
             <>
             <ContainerScroll>
@@ -50,7 +62,7 @@ function Categorias (){
                     
                     <Titulo>Infantil</Titulo>
                 </Opcoes>
-            <Opcoes>
+                <Opcoes>
                 
                 <ImgCategoria source={require('../../../assets/formatura.png')}/>
                 
@@ -86,8 +98,98 @@ function Categorias (){
             
             <Titulo>Ano Novo</Titulo>
         </Opcoes>
+            
     </ContainerScroll>
     </>
         );
     }
 
+function CardServico(){
+    return( <ContainerScroll>
+        <Opcoes>
+            <FundoServico>
+                    <ImgServico source={require('../../../assets/bitaimage.png')}/>
+                    <TextoServico>
+                        <H1>Cup cake mundo Bita</H1>
+
+                        <ClassifiqueLocal>
+                            
+                        </ClassifiqueLocal>
+                        <Servidor></Servidor>
+                    </TextoServico>
+
+                </FundoServico>
+            
+                
+        </Opcoes>
+        <Opcoes>
+            <FundoServico>
+                    <ImgServico source={require('../../../assets/escorrega.png')}/>
+                    <TextoServico>
+                        <H1>Cup cake mundo Bita</H1>
+
+                        <ClassifiqueLocal>
+                            
+                        </ClassifiqueLocal>
+                        <Servidor></Servidor>
+                    </TextoServico>
+
+                </FundoServico>
+            
+                
+        </Opcoes>
+    </ContainerScroll>);
+}
+
+function CardProduto(){
+    return( <ContainerScroll>
+        <Opcoes>
+            
+            <FundoProduto>
+                <ImgProduto source={require('../../../assets/copo.png')}/>
+                <TextoServico>
+                    <H1></H1>
+
+                    <ClassifiqueLocal>
+                        
+                    </ClassifiqueLocal>
+                    <Servidor></Servidor>
+                </TextoServico>
+
+            </FundoProduto>
+            
+                
+        </Opcoes>
+        <Opcoes>
+            
+            <FundoProduto>
+                <ImgProduto source={require('../../../assets/copo.png')}/>
+                <TextoServico>
+                    <H1></H1>
+
+                    <ClassifiqueLocal>
+                        
+                    </ClassifiqueLocal>
+                    <Servidor></Servidor>
+                </TextoServico>
+
+            </FundoProduto>
+        
+                
+        </Opcoes>
+        <Opcoes>
+        <FundoProduto>
+                <ImgProduto source={require('../../../assets/copo.png')}/>
+                <TextoServico>
+                    <H1></H1>
+
+                    <ClassifiqueLocal>
+                        
+                    </ClassifiqueLocal>
+                    <Servidor></Servidor>
+                </TextoServico>
+
+            </FundoProduto>
+        </Opcoes>
+    </ContainerScroll>);
+}
