@@ -2,13 +2,9 @@ const DataTypes = require("sequelize");
 const sequelize = require("../config/sequelize");
 
 const Review = sequelize.define('Review', {
-    score: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-
     comment: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
     }
 
 }, {
