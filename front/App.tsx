@@ -1,21 +1,53 @@
-import { StatusBar } from 'expo-status-bar';
+
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import Login from './src/pages/login';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {FiPlus, FiShoppingCart} from 'react-icons/fi'
+import {VscHome} from 'react-icons/vsc'
+import {BiUser} from 'react-icons/bi'
+import {BsHeart} from 'react-icons/bs'
+import { useFonts } from 'expo-font';
 import Inserir_Anuncio from './src/pages/inserir-anuncio';
 import Perfil from './src/pages/perfil';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+
+const Tab = createBottomTabNavigator();
 
 
-import { useFonts } from 'expo-font';
+const Stack = createStackNavigator();
+
+function HomeTabs(){
+  return(
+      <Tab.Navigator tabBarOptions={{showLabel: false, activeTintColor: '#ef4767', inactiveTintColor: '#f3f1e2', activeBackgroundColor:'#073b4c', inactiveBackgroundColor:'#6e8992' }}>
+         <Tab.Screen  name="Home" component={Perfil} options={{tabBarIcon: ({color, size}) =>(<VscHome color={color} size={'25px'} />)}}/>
+         <Tab.Screen  name="Favoritos" component={Perfil} options={{tabBarIcon: ({color}) =>(<BsHeart color={color} size={'30px'}/>)}}/> 
+
+          <Tab.Screen name="Inserir_Anuncio" component={Inserir_Anuncio} options={{tabBarIcon: ({color}) =>(<FiPlus color={color} size={'30px'}/>)}}/>
+
+          <Tab.Screen name="Carrinho" component={Inserir_Anuncio} options={{tabBarIcon: ({color}) =>(<FiShoppingCart color={color} size={'30px'}/>)}}/>
+
+          <Tab.Screen  name="Perfil" component={Perfil} options={{tabBarIcon: ({color}) =>(<BiUser color={color} size={'30px'}/>)}}/>
+      </Tab.Navigator>
+  );
+}
+
+
+
 export default function App() {
   const [ loaded ] = useFonts({
     Signika: require('../front/assets/assetsFonts/Signika.ttf'),
   })
-  return (
-    <View>
-      <Perfil/>
-    </View>
-    
+  return ( 
+    <NavigationContainer >
+      <Stack.Navigator>
+          <Tab.Screen name="MenuTabs" component={HomeTabs} options={{
+          tabBarBadge: 3 
+        }}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+      
   );
 }
 /*

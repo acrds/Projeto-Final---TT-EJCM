@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, TextInput, TouchableOpacity, Text, Image } from 'react-native';
-import { useForm, Controller } from 'react-hook-form';
 import { BackgroundApp, SectionTop, H1, BackFoto, GroupCenter, FotoPerfil, BackInfo, TextFixo, TextMutavel, Row, BackButtons, ButtonAtualizar, ButtonExcluir, TextAtualizar, TextExcluir, FotoCamera, Logout } from './styles'
+
+
 
 export default function Perfil () {
 
@@ -36,6 +37,7 @@ export default function Perfil () {
                     </TextExcluir>
                 </ButtonExcluir>
             </BackButtons>
+            
             </BackgroundApp>
         );
 }
