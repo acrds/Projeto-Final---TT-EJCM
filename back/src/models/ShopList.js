@@ -5,12 +5,9 @@ const ShopList = sequelize.define('ShopList', {
     
     price: {
         type: DataTypes.FLOAT,
-        allowNull: false
-    },
-
-    payment_method: {
-        type: DataTypes.STRING
+        defaultValue: 0.00
     }
+    
 
 }, {
     // timestamps: false
@@ -18,8 +15,8 @@ const ShopList = sequelize.define('ShopList', {
 
 ShopList.associate = function(models) {
     ShopList.belongsTo(models.User);
-    ShopList.belongsToMany(models.Product, {through: models.Product_ShopList});
-    ShopList.hasMany(models.Sale);
+    ShopList.belongsToMany(models.Product, {through: models.Product_ShopList, foreignKey: 'shopListId', otherKey: 'productId'});
+    ShopList.hasOne(models.Sale);
 }
 
 module.exports = ShopList;
