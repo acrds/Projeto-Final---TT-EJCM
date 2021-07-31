@@ -120,7 +120,7 @@ function CardServico(){
             </FundoServico>
         </Opcoes>
         
-            )})};
+            )})}
 
      </ContainerScroll>
     )};
@@ -165,7 +165,7 @@ function CardProduto(){
                 <ServidorProd>{`Vendido por: ${produtos.anunciante}`}</ServidorProd>
             </FundoProduto>}
         </Opcoes>
-            )})};
+            )})}
 
      </ContainerScroll>
     )};
