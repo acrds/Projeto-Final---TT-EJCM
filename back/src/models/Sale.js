@@ -1,28 +1,18 @@
 const DataTypes = require("sequelize");
 const sequelize = require("../config/sequelize");
 
+
+//Adicionar método de pagamento e remover da shoplist
+//Criação da sale implica no esvaziamento do carrinho
 const Sale = sequelize.define('Sale', {
-    price: {
+    payment_method: {
+        type: DataTypes.STRING
+    },
+
+    shipping: {
         type: DataTypes.FLOAT,
-        allowNull: false
-    },
-
-    payment_method: {
-        type: DataTypes.STRING
-    },
-
-    userID: {
-        type: DataTypes.INTEGER
-    },
-
-    products: {
-        type: DataTypes.STRING
-    },
-
-    payment_method: {
-        type: DataTypes.STRING
+        defaultValue: 0.00
     }
-
 }, {
     // timestamps: false
 });
