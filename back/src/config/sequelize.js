@@ -23,11 +23,12 @@ require('../models/User');
 require('../models/Category');
 require('../models/PartyType');
 require('../models/Product');
-require('../models/Question');
+//require('../models/Question');
 require('../models/Review');
 require('../models/Sale');
 require('../models/ShopList');
 require('../models/Product_ShopList');
+require('../models/Photo');
 
 
 
