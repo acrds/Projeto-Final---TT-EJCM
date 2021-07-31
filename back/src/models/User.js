@@ -38,10 +38,6 @@ const User = sequelize.define('User', {
         unique: true
     },
 
-    photo: {
-        type: DataTypes.STRING
-    },
-
     moderator: {
         type: DataTypes.BOOLEAN
     }
@@ -51,12 +47,10 @@ const User = sequelize.define('User', {
 });
 
 User.associate = function(models) {
-    User.hasMany(models.Review);
-    User.hasMany(models.Question, {as: 'userMakesQuestion'});
-    User.hasMany(models.Question, {as: 'userAnswersQuestion'});
-    User.hasOne(models.ShopList);
-    User.hasMany(models.Product);
-    User.belongsToMany(models.Product, {through: 'favorite_list', foreignKey: 'userId'})
+    User.hasMany(models.Review);  
+    User.hasOne(models.ShopList); 
+    User.hasOne(models.Photo);
+    User.belongsToMany(models.Product, {through: 'favorite_list', as: 'favorite_product', foreignKey: 'userId'}) 
 }
 
 module.exports = User;
