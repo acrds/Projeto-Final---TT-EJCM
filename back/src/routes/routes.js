@@ -3,16 +3,18 @@ const UserController = require('../controllers/UserController');
 const ReviewController = require('../controllers/ReviewController');
 const PartyTypeController = require('../controllers/PartyTypeController');
 const ProductController = require('../controllers/ProductController');
-const CategoryController = require('../controllers/CategoryController');
 const SaleController = require('../controllers/SaleController');
 const ShopListController = require('../controllers/ShopListController');
-const validator = require("../config/validator");
-const adminMiddleware = require("../middlewares/admin");
+const AuthController = require('../controllers/AuthController');
 const path = require('path');
 const multer = require('multer');
+const validator = require("../config/validator");
+const adminMiddleware = require("../middlewares/admin");
 const storage = require("../config/files");
-
+const passport = require("passport");
 const router = Router();
+
+router.use("/private", passport.authenticate('jwt', {session: false}));
 
 const upload = multer({ storage: storage,
 	fileFilter: function (req, file, cb) {
@@ -73,22 +75,23 @@ router.post('/partyTypes',PartyTypeController.create);
 router.put('/partyTypes/:id', PartyTypeController.update);
 router.delete('/partyTypes/:id', PartyTypeController.destroy)
 
+//const allUploads = upload.fields([{ name: 'photo', maxCount: 5 }]);
+
+router.get('/private/getDetails', AuthController.getDetails);
+router.post('/login', AuthController.login);
 
 
 router.get('/products',ProductController.index);
 router.get('/products/:id',ProductController.show);
 router.get('/productsDestroy/:id', adminMiddleware, ProductController.destroy); 
+router.get('/products/:typeId',ProductController.findByType);
 router.post('/products',ProductController.create);
+router.post('/products/photo/:id', upload.single('photo'),ProductController.addPhotoProduct);
 router.put('/products/:id', ProductController.update);
-router.delete('/products/:id', ProductController.destroy)
-
-
-
-router.get('/categories',CategoryController.index);
-router.get('/categories/:id',CategoryController.show);
-router.post('/categories',CategoryController.create);
-router.put('/categories/:id', CategoryController.update);
-router.delete('/categories/:id', CategoryController.destroy)
+router.put('/products/addPartyType/:id', ProductController.addRelationPartyType);
+router.put('/products/removePartyType/:id', ProductController.removeRelationPartyType);
+router.delete('/products/:id', ProductController.destroy);
+router.delete('/products/photo/:id', ProductController.removePhoto);
 
 
 
@@ -104,6 +107,7 @@ router.get('/shopLists',ShopListController.index);
 router.get('/shopLists/:id',ShopListController.show);
 router.post('/shopLists',ShopListController.create);
 router.put('/shopLists/:id', ShopListController.update);
+router.put('/shopLists/addSale/:id', ShopListController.concludeSale);
 router.delete('/shopLists/:id', ShopListController.destroy)
 
 module.exports = router;
