@@ -14,14 +14,6 @@ const Product = sequelize.define('Product', {
 
     description: {
         type: DataTypes.STRING
-    },
-
-    score: {
-        type: DataTypes.FLOAT
-    },
-
-    photo: {
-        type: DataTypes.STRING
     }
 
 }, {
@@ -35,7 +27,8 @@ Product.associate = function(models) {
     Product.belongsToMany(models.PartyType, {through: 'product_partytype', foreignKey: 'productId'});
     Product.belongsTo(models.Category);
     Product.belongsToMany(models.ShopList, {through: models.Product_ShopList, foreignKey: 'productId', otherKey: 'shopListId'});
-    Product.belongsTo(models.User)
+    Product.belongsTo(models.User);
+    Product.hasOne(models.Photo);
 }
 
 module.exports = Product;
