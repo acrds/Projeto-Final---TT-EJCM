@@ -2,6 +2,8 @@ import styled from "styled-components/native";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
+
+
 export const Cabecalhofav = styled.View`
     background-color:#FFD166
     width: ${wp('100%')};
@@ -57,22 +59,39 @@ export const H1 = styled.Text`
     font-family: Signika;
     margin-bottom: 2%;
     font-weight:700;
-    margin-left: 6%;
-    margin-top:2%;`
+    margin-left: -8%;
+    margin-top:-10%;`
 
-export const Textfav = styled.Text`
+export const Textfav = styled.View`
     font-family: Signika;
     font-size: 1em;
     color: #073B4C;
     font-weight:600;
     text-align: left;
-    margin-left: 7%;
+    margin-left: -6%;
     margin-top:-1%;
     margin-bottom: 3%;`
     
 export const  Servidor = styled.Text`
-    text-align: center;
+    text-align: left;
     font-size: 0.8em;
     color: #073B4C;
     font-weight:500;
+    margin-left: -6%
     font-family: Signika;`
+
+export const Botaofav = styled.TouchableOpacity`
+   margin-left: 90%;
+
+
+`
+export const Alinhaitens = styled.View`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around;
+    width: ${wp('90%')};
+    height: ${hp('15px')};
+   
+    
+`

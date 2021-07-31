@@ -1,5 +1,7 @@
-import React from 'react';
-import { ImageComponent, ScrollView, Text , TextInput, View} from 'react-native';
+import React, { useReducer } from 'react';
+import { useState } from 'react';
+import { ImageComponent,  ScrollView, Text , TextInput, View, Button, Alert, StyleSheet, Pressable, TouchableWithoutFeedbackBase, TouchableOpacity} from 'react-native';
+import { BsHeartFill } from "react-icons/bs";
 
 import {Cabecalhofav,
         BackGroundfav,
@@ -10,7 +12,8 @@ import {Cabecalhofav,
         H1,
         Textfav,
         Servidor,
-        Textcabecalho
+        Textcabecalho,
+        Alinhaitens,
         } from './styles';
 
 
@@ -21,6 +24,7 @@ export default function Favoritos(){
         
                 <Cabecalhofav>
                     <Textcabecalho>Favoritos</Textcabecalho>
+                   
                    
                 </Cabecalhofav>
 
@@ -63,24 +67,48 @@ function Cardfav(){
         },
       ];
     
+    const [buttonPresses,setButtonPresses] = useState(0);
 
     return( 
         <>
         { listafav.map(favorit => {
             return(
         
-        <Opcoes key={favorit.id}>
-            <Fundocardfav>
-                <Imgfav source={require('../../../assets/bitaimage.png')}/>
-                <H1>{favorit.titulo.charAt(0).toUpperCase() + favorit.titulo.slice(1)}</H1>
-                    <Textfav>
-                        {`${favorit.local} . R$ ${favorit.preco}`}
-                        
-                    </Textfav>
-                <Servidor>{`Vendido por: ${favorit.anunciante}`}</Servidor>
-            </Fundocardfav>
-        </Opcoes>
         
+        <Fundocardfav key={favorit.id}>
+                <Imgfav source={require('../../../assets/bitaimage.png')}/>
+                
+                <Alinhaitens>
+                    
+                    
+                    <Opcoes >
+                    <H1>{favorit.titulo.charAt(0).toUpperCase() + favorit.titulo.slice(1)}</H1>
+                        <Textfav>
+                        
+                            {`${favorit.local} . R$ ${favorit.preco}`}
+                        </Textfav>
+                    <Servidor>{`Vendido por: ${favorit.anunciante}`}</Servidor>
+                    </Opcoes>
+                    <TouchableOpacity><BsHeartFill
+                    color = {'#EF4767'} size={'35px'} /></TouchableOpacity>
+                </Alinhaitens>
+                
+        </Fundocardfav>
             )})}
         </>
     )};
+
+const styles = StyleSheet.create({
+    container: {
+        flex:1,
+        alignItems:'center',
+        justifyContent: 'center',
+    },
+    text:{
+        fontSize:32,  
+    },
+    button:{
+        backgroundColor: '#ffff',
+        
+    },
+    });
