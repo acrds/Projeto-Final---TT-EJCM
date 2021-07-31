@@ -1,10 +1,23 @@
 const {response} = require ('express');
 const Question = require('../models/Question');
+const User = require('../models/User');
+
 
 const create = async(req,res) => {
     try{
-          const question = await Question.create(req.body);
-          return res.status(201).json({message: "Question cadastrada com sucesso!", Question: question});
+          var question = await Question.create(req.body);
+          const user = await User.findByPk(req.body.UserId); 
+          if(user && question.question) {
+            await question.setUserMakesQuestion(user); 
+            return res.status(201).json({message: "Question cadastrada com sucesso!", Question: question});
+        }
+        else if(user && question.answer) {
+            const answer = question;
+            question = await Question.findByPk(req.body.QuestionId);
+            await answer.setUserAnswersQuestion(user);
+            await answer.setQuestion(question); 
+            return res.status(201).json({message: "Question cadastrada com sucesso!", Question: answer});
+        }
       }catch(err){
           res.status(500).json({error: err, message: "Erro ao criar Question."});
       }
