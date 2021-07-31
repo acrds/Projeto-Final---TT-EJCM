@@ -1,18 +1,24 @@
 import React from 'react';
-import { ScrollView, Text , View} from 'react-native';
+import { ImageComponent, ScrollView, Text , TextInput, View} from 'react-native';
 
 import { BackGroundHome,
          Cabecalho,
          Navegacao,
          Label,
          ImgServico,
-         TextoServico,
          H1,
-         ClassifiqueLocal,
          Servidor,
          FundoServico,
          FundoProduto,
-         ImgProduto} from './styles';
+         ImgProduto,
+         Barrabusca,
+         TextServico,
+         ImageBusca,
+         H1Prod,
+         TextProd,
+         ServidorProd,
+         ContainerScrollCat
+         } from './styles';
 
 import { ContainerScroll, Opcoes, ImgCategoria, Titulo } from './styles';
 
@@ -25,7 +31,8 @@ export default function Home(){
 <ScrollView>
         
                 <Cabecalho>
-                    
+
+                    <Barrabusca></Barrabusca>    
                 </Cabecalho>
 
 
@@ -52,144 +59,113 @@ export default function Home(){
 
 
 function Categorias (){
+    const listCategoria = ['infantil','formatura','casamento','junina',
+    'fantasia','aniversario', 'ano-novo']
 
         return(
             <>
-            <ContainerScroll>
-                <Opcoes>
-                    
-                    <ImgCategoria source={require('../../../assets/infantil.png')}/>
-                    
-                    <Titulo>Infantil</Titulo>
-                </Opcoes>
-                <Opcoes>
-                
-                <ImgCategoria source={require('../../../assets/formatura.png')}/>
-                
-                <Titulo>Formatura</Titulo>
-            </Opcoes>
-        <Opcoes>
-            
-            <ImgCategoria source={require('../../../assets/casamento.png')}/>
-            
-            <Titulo>Casamento</Titulo>
+            <ContainerScrollCat>
+ 
+ { listCategoria.map(categoria => {
+     return(
+        <Opcoes key={categoria}>
+        <ImgCategoria source={require(`../../../assets/${categoria}.png`)}/>
+        <Titulo>{categoria.charAt(0).toUpperCase() + categoria.slice(1)}</Titulo>
         </Opcoes>
-        <Opcoes>
-            
-            <ImgCategoria source={require('../../../assets/junina.png')}/>
-            
-            <Titulo>Junina</Titulo>
-        </Opcoes>
-        <Opcoes>
-            
-            <ImgCategoria source={require('../../../assets/fantasia.png')}/>
-            
-            <Titulo>Fantasia</Titulo>
-        </Opcoes>
-        <Opcoes>
-            
-            <ImgCategoria source={require('../../../assets/aniversario.png')}/>
-            
-            <Titulo>Aniversário</Titulo>
-        </Opcoes>
-        <Opcoes>
-            
-            <ImgCategoria source={require('../../../assets/ano-novo.png')}/>
-            
-            <Titulo>Ano Novo</Titulo>
-        </Opcoes>
-            
-    </ContainerScroll>
+     )
+ }) 
+}
+              </ContainerScrollCat>
     </>
-        );
-    }
+    );
+}
 
 function CardServico(){
-    return( <ContainerScroll>
-        <Opcoes>
+    
+    const listaServicos = [
+        {
+          id: 0,
+          titulo: 'titulo do produto',
+          preco: 55.6,
+          anunciante: 'Fulano de tal',
+          local: 'Rio de Janeiro',
+          imagem: '../../../assets/escorrega.png'
+        },
+        {
+          id: 1,
+          titulo: 'outro produto',
+          preco: 20,
+          anunciante: 'Outro Fulano',
+          local: 'Mangaratiba',
+          imagem:'../../../assets/escorrega.png'
+        },
+      ];
+    
+
+    return( 
+    
+    <ContainerScroll>
+        { listaServicos.map(servicos => {
+            return(
+        
+        <Opcoes key={servicos.id}>
             <FundoServico>
-                    <ImgServico source={require('../../../assets/bitaimage.png')}/>
-                    <TextoServico>
-                        <H1>Cup cake mundo Bita</H1>
-
-                        <ClassifiqueLocal>
-                            
-                        </ClassifiqueLocal>
-                        <Servidor></Servidor>
-                    </TextoServico>
-
-                </FundoServico>
-            
-                
+                <ImgServico source={require('../../../assets/escorrega.png')}/>
+                <H1>{servicos.titulo.charAt(0).toUpperCase() + servicos.titulo.slice(1)}</H1>
+                    <TextServico>
+                        {`${servicos.local} . R$ ${servicos.preco}`}
+                        
+                    </TextServico>
+                <Servidor>{`Vendido por: ${servicos.anunciante}`}</Servidor>
+            </FundoServico>
         </Opcoes>
-        <Opcoes>
-            <FundoServico>
-                    <ImgServico source={require('../../../assets/escorrega.png')}/>
-                    <TextoServico>
-                        <H1>Cup cake mundo Bita</H1>
+        
+            )})};
 
-                        <ClassifiqueLocal>
-                            
-                        </ClassifiqueLocal>
-                        <Servidor></Servidor>
-                    </TextoServico>
+     </ContainerScroll>
+    )};
 
-                </FundoServico>
-            
-                
-        </Opcoes>
-    </ContainerScroll>);
-}
 
 function CardProduto(){
-    return( <ContainerScroll>
-        <Opcoes>
-            
-            <FundoProduto>
+    
+    const listaProdutos = [
+        {
+          id: 0,
+          titulo: 'titulo do produto',
+          preco: 55.6,
+          anunciante: 'Fulano de tal',
+          local: 'Rio de Janeiro',
+          imagem: '../../../assets/escorrega.png'
+        },
+        {
+          id: 1,
+          titulo: 'outro produto',
+          preco: 20,
+          anunciante: 'Outro Fulano',
+          local: 'Mangaratiba',
+          imagem:'../../../assets/escorrega.png'
+        },
+      ];
+    
+
+    return( 
+    
+    <ContainerScroll>
+        { listaProdutos.map(produtos => {
+            return(
+        <Opcoes key={produtos.id}>
+
+            {<FundoProduto>
                 <ImgProduto source={require('../../../assets/copo.png')}/>
-                <TextoServico>
-                    <H1></H1>
-
-                    <ClassifiqueLocal>
-                        
-                    </ClassifiqueLocal>
-                    <Servidor></Servidor>
-                </TextoServico>
-
-            </FundoProduto>
-            
-                
+                <H1Prod>{produtos.titulo.charAt(0).toUpperCase() + produtos.titulo.slice(1)}</H1Prod>
+                    <TextProd>
+                        <Text>{`R$ ${produtos.preco}`}</Text>
+                         
+                    </TextProd>
+                <ServidorProd>{`Vendido por: ${produtos.anunciante}`}</ServidorProd>
+            </FundoProduto>}
         </Opcoes>
-        <Opcoes>
-            
-            <FundoProduto>
-                <ImgProduto source={require('../../../assets/copo.png')}/>
-                <TextoServico>
-                    <H1></H1>
+            )})};
 
-                    <ClassifiqueLocal>
-                        
-                    </ClassifiqueLocal>
-                    <Servidor></Servidor>
-                </TextoServico>
-
-            </FundoProduto>
-        
-                
-        </Opcoes>
-        <Opcoes>
-        <FundoProduto>
-                <ImgProduto source={require('../../../assets/copo.png')}/>
-                <TextoServico>
-                    <H1></H1>
-
-                    <ClassifiqueLocal>
-                        
-                    </ClassifiqueLocal>
-                    <Servidor></Servidor>
-                </TextoServico>
-
-            </FundoProduto>
-        </Opcoes>
-    </ContainerScroll>);
-}
+     </ContainerScroll>
+    )};
