@@ -3,11 +3,16 @@ const Review = require('../models/Review');
 
 const create = async(req,res) => {
     try{
-          const review = await Review.create(req.body);
-          return res.status(201).json({message: "Review cadastrada com sucesso!", Review: review});
+          validationResult(req).throw();     
+          if(req.body.userId && req.body.productId){
+            const review = await Review.create(req.body);
+            console.log(req.body); 
+            return res.status(201).json({message: "Review cadastrada com sucesso!", Review: review});
+          }   
+          throw new Error();
       }catch(err){
           res.status(500).json({error: err, message: "Erro ao criar Review."});
-      }
+      } 
 };
 
 const index = async(req,res) => {
