@@ -10,13 +10,16 @@ export default function Perfil () {
             <BackgroundApp>
                 <SectionTop>
                     <H1>Perfil</H1>
+                    <TouchableOpacity>
                     <Logout source={require('../../../assets/logout.png')}></Logout>
+                    </TouchableOpacity>
                 </SectionTop>
                 <BackFoto>
                     <GroupCenter>
+                        <TouchableOpacity>
                         <FotoPerfil source={require('../../../assets/perfil.png')}></FotoPerfil>
-                        <FotoCamera source={require('../../../assets/camera-perfil.png')}></FotoCamera>
-                        
+                        <FotoCamera source={require('../../../assets/camera-perfil.png')}></FotoCamera>   
+                        </TouchableOpacity>                    
                     </GroupCenter>
                 </BackFoto>
                 <BackInfo>

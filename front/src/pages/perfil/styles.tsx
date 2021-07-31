@@ -15,6 +15,7 @@ display: flex;
 flex-direction: row;
 justify-content: space-around;
 align-items:  center;
+padding-left: 15%;
 `
 
 export const H1 = styled.Text ` 
