@@ -1,5 +1,7 @@
 import React from 'react';
 import { ImageComponent, ScrollView, Text , TextInput, View} from 'react-native';
+import { FaSistrix } from "react-icons/fa";
+
 
 import { BackGroundHome,
          Cabecalho,
@@ -17,7 +19,9 @@ import { BackGroundHome,
          H1Prod,
          TextProd,
          ServidorProd,
-         ContainerScrollCat
+         ContainerScrollCat,
+         Busca
+        
          } from './styles';
 
 import { ContainerScroll, Opcoes, ImgCategoria, Titulo } from './styles';
@@ -28,11 +32,15 @@ export default function Home(){
 
 
     return(
-<ScrollView>
+        <>
+    <ScrollView>
         
                 <Cabecalho>
 
-                    <Barrabusca></Barrabusca>    
+                   <Busca>
+                        <Barrabusca/>
+                        <FaSistrix color={'#073B4C'}/>
+                    </Busca>
                 </Cabecalho>
 
 
@@ -52,6 +60,7 @@ export default function Home(){
         
 
 </ScrollView>
+</>
         
     )};
 
@@ -120,7 +129,7 @@ function CardServico(){
             </FundoServico>
         </Opcoes>
         
-            )})};
+            )})}
 
      </ContainerScroll>
     )};
@@ -165,7 +174,7 @@ function CardProduto(){
                 <ServidorProd>{`Vendido por: ${produtos.anunciante}`}</ServidorProd>
             </FundoProduto>}
         </Opcoes>
-            )})};
+            )})}
 
      </ContainerScroll>
     )};

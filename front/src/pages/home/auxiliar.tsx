@@ -1,4 +1,4 @@
-<Opcoes>
+{/* <Opcoes>
                 
                 <ImgCategoria source={require('../../../assets/formatura.png')}/>
                 
@@ -119,4 +119,4 @@ function CardServico(){
 
         <ImgProduto source={produtos.imagem}/>
 
-        <ImgProduto source={require(produtos.imagem)}/>
+        <ImgProduto source={require(produtos.imagem)}/> */}

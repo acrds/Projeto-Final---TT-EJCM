@@ -9,17 +9,25 @@ export const BackGroundHome = styled.View `
     font-family: Signika;`
 
 export const Barrabusca = styled.TextInput `
-    background-color:#D1D28D
-    padding-top:2%;
-    padding-bottom:2%;
-    width: ${wp('55%')};
-    margin-top: 4.5%;
-    margin-left: 40%;
+    background-color:#D1D28D;
     border-Radius: 20;
-    text-align:center;
-    
-    
+    justify-content:center;
     `
+export const Busca = styled.View `
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    background-color:#D1D28D;
+    width: ${wp('50%')};
+    height: ${hp('3%')};
+    padding-top:4%;
+    padding-bottom:4%;
+    margin-top:9%;
+    margin-left:40%;
+    border-Radius: 20;
+    
+
+`
 export const ImageBusca = styled.Image `
     
     
