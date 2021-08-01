@@ -18,7 +18,10 @@ import {CabecalhoPay,
     ViewCredito,
     TextoCredito,
     ViewDebito,
-    TextoDebito
+    TextoDebito,
+    AbsoluteB,
+    BaloesB,
+    TamanhoB
 
 
     } from './styles';
@@ -26,7 +29,7 @@ import { Navegacao } from '../home/styles';
 
 export default function PaymentMethod(){
     return(
-    <ScrollView>
+    <View>
         <CabecalhoPay>
             <Botaovoltar><BsChevronLeft color={"#073B4C"} size={'30px'}/></Botaovoltar>
         </CabecalhoPay>
@@ -52,7 +55,11 @@ export default function PaymentMethod(){
                 <TextoDebito>Débito</TextoDebito>
                 <BiCreditCard color={'#073B4C'} size={'25px'}/>
             </ViewDebito>
-
+            <TamanhoB>
+            <AbsoluteB>
+                <BaloesB source={require('../../../assets/baloesPay.png')}/>
+            </AbsoluteB>
+            </TamanhoB>
         </BackGroundPay>
 
         <NavegacaoPay>
@@ -60,5 +67,5 @@ export default function PaymentMethod(){
         </NavegacaoPay>
     
     
-    </ScrollView>
+    </View>
     )}

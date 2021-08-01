@@ -63,7 +63,7 @@ export const ViewDinheiro = styled.TouchableOpacity`
     border-style: solid;
     border-width: 1px;
     width: ${wp('80%')};
-    height: ${hp('8%')};
+    height: ${hp('6%')};
     margin-left:10%;
     align-items: left;
     justify-content:center;
@@ -75,7 +75,7 @@ export const ViewDinheiro = styled.TouchableOpacity`
 `
 export const TextoDinheiro = styled.Text`
     font-family: Signika;
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight:500;
     color:#073B4C;
     margin-right:30%;`
@@ -84,7 +84,7 @@ export const ViewCredito = styled.TouchableOpacity`
     border-style: solid;
     border-width: 1px;
     width: ${wp('80%')};
-    height: ${hp('8%')};
+    height: ${hp('6%')};
     margin-left:10%;
     align-items: left;
     justify-content:center;
@@ -95,7 +95,7 @@ export const ViewCredito = styled.TouchableOpacity`
     justify-content:space-around;`
 export const TextoCredito = styled.Text`
     font-family: Signika;
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight:500;
     color:#073B4C;
     margin-right:30%;`
@@ -104,7 +104,7 @@ export const ViewDebito = styled.TouchableOpacity`
     border-style: solid;
     border-width: 1px;
     width: ${wp('80%')};
-    height: ${hp('8%')};
+    height: ${hp('6%')};
     margin-left:10%;
     align-items: left;
     justify-content:center;
@@ -115,7 +115,20 @@ export const ViewDebito = styled.TouchableOpacity`
     justify-content:space-around;`
 export const TextoDebito = styled.Text`
     font-family: Signika;
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight:500;
     color:#073B4C;
     margin-right:30%;`
+
+export const TamanhoB = styled.View`
+  
+`
+
+export const AbsoluteB = styled.View`
+    position: absolute;
+    right: 0px;
+    top:0px;`
+
+export const BaloesB = styled.Image`
+    width: 130px;
+    height: 290px;`
