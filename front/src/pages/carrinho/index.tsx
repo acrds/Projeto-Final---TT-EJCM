@@ -3,6 +3,8 @@ import { ImageComponent,  ScrollView, Text , TextInput, View, Button, Alert, Sty
 import { BsTrashFill , BsCircleFill} from "react-icons/bs";
 import { BsPlus } from "react-icons/bs";
 import {FiMinus} from 'react-icons/fi';
+import { BsArrowRight } from "react-icons/bs";
+
 
 import {Cabecalhocar,
         Backgroundcar,
@@ -34,7 +36,11 @@ import {Cabecalhocar,
         ValorResumoProd,
         ResumoFrete,
         TituloResumoFrete,
-        ValorResumoFrete
+        ValorResumoFrete,
+        BotaoFormaPagamento,
+        TextoFormaPagamento,
+        IconeFormaPagamento,
+        BotaoConcluir
             
 
         
@@ -99,6 +105,13 @@ export default function Favoritos(){
                         <ValorResumoFrete>R$ 5,00</ValorResumoFrete>
                   </ResumoFrete>
             </View>
+
+            <BotaoFormaPagamento>
+
+                <TextoFormaPagamento>Forma de pagamento</TextoFormaPagamento>
+                <IconeFormaPagamento><BsArrowRight color={'#118AB2'} size={'30px'}/></IconeFormaPagamento>
+            </BotaoFormaPagamento>
+            <BotaoConcluir>Concluir</BotaoConcluir>
         </Backgroundcar>
         <Navegacao>
     

@@ -35,7 +35,7 @@ export const Elementoscarrinho = styled.View`
 export const Backgroundcar = styled.View`
     background-color:#F3F1E2;
     width: ${wp('100%')};
-    height: ${hp('110%')};
+    height: ${hp('95%')};
     font-family: Signika;
     `
 
@@ -266,4 +266,39 @@ export const  TituloResumoFrete=styled.View`
     font-size: 1em;
     font-weight:500;
     color:#073B4C
+`
+
+export const  BotaoFormaPagamento=styled.TouchableOpacity`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around;
+    margin-top:10%;
+    background-color:#AFD2D4;
+    width: ${wp('80%')};
+    height: ${hp('6px')};
+    margin-left:10%;
+    border-Radius:10;
+`
+export const  TextoFormaPagamento=styled.View`
+    font-family: Signika;
+    font-size: 1em;
+    font-weight:600;
+    color:#118AB2;
+`
+export const  IconeFormaPagamento=styled.View``
+
+export const  BotaoConcluir=styled.TouchableOpacity`
+    background-color:#F2BEBD;
+    color:#EF4767;
+    margin-top:8%;
+    margin-left:30%;
+    width: ${wp('40%')};
+    height: ${hp('6px')};
+    text-align:center;
+    justify-content:center;
+    font-size:1em;
+    font-weight:600;
+    border-Radius: 10;
+    
 `
