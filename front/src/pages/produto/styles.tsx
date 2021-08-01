@@ -4,7 +4,8 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 export const BackgroundApp = styled.View ` 
 background-color: #f3f1e2;
 width: ${wp('100%')};
-height: ${hp('100%')};
+height: auto;
+min-height:${hp('100%')};
 font-family: Signika;
 `
 export const SectionTop = styled.View ` 
@@ -59,12 +60,13 @@ align-items: center;
 `
 export const TextCategoria = styled.Text`
 padding:5px 8px;
-background-color: rgba();
+background-color: rgba(239, 71, 103, .4);
 color:#ef4767;
+border-radius:20px;
 `
 export const BackText = styled.View`
 width: ${wp('100%')};
-height: ${hp('18%')};
+height: ${hp('15%')};
 margin-top:${hp('1%')};
 
 `
@@ -76,9 +78,21 @@ font-size:16px;
 color:#073b4c;
 font-weight: 700;
 `
+export const Location = styled.View`
+display: flex;
+flex-direction:row;
+align-items:center;
+justify-content:center;
+margin-top:10px;`
+
+export const LocationText = styled.Text`
+font-size:15px;
+color:#073b4c;
+font-weight: 900;`
+
 export const Anunciado = styled.Text`
 text-align:center;
-font-size:15px;
+font-size:12px;
 color:#073b4c;
 `
 export const BackPreco = styled.View`
@@ -117,7 +131,7 @@ height: ${hp('8%')};
 `
 export const BackTextComentario = styled.View`
 width: ${wp('20%')};
-height: ${hp('8%')};
+height: ${hp('6%')};
 display: flex;
 flex-direction: row;
 justify-content: flex-start;
@@ -127,6 +141,7 @@ align-items: center;
 export const Comentario = styled.Text`
 font-size: 20px;
 color: #073b4c;
+font-weight:700;
 `
 export const White = styled.Text`
 color:white;`
@@ -176,29 +191,65 @@ export const Input = styled.TextInput`
     padding-bottom: 5px;
     margin-left: 10px;
 `
+export const Direita = styled.View`
+   
+height: ${hp('4%')};    
+    width:${wp('88%')};
+display: flex;
+
+flex-direction: row;
+justify-content: flex-end;
+align-items:  center;
+`
+export const ButtonEnviar = styled.TouchableOpacity`
+display: flex;
+
+flex-direction: row;
+justify-content: center;
+align-items:  center;
+padding: 2px 8px;
+color: #f3f1e2;
+background-color: #073b4c;
+border-radius:5px;
+width:50px;
+
+`
+
+export const TextEnviar = styled.Text`
+color: #f3f1e2;
+font-size:12px;`
+
 export const BackTextComentarioFeito = styled.View`
     background-color: #073b4c;
     margin-bottom:${hp('2%')};
     width:${wp('85%')};
-    padding:8px 5px 0px 5px;
+    padding:8px 5px 0px 20px;
     border-radius:20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-`
-export const TextComentarioFeito  = styled.Text`
-font-size:12px;
-color: #f3f2e1;
+    padding-top: 7px;
+    padding-bottom: 7px;
+	margin-left:${wp('3%')};
 `
 
-export const ContainerScroll = styled.ScrollView.attrs(() => ({
-    vertival: true,
-    contentContainerStyle:{
-        alignItems:'center'
-    }
-}))`
-width: ${wp('80%')};
-padding-left: ${wp('5%')};
-height: ${hp('15%')};
+export const TextComentarioFeito  = styled.Text`
+	font-size:12px;
+	color: #f3f2e1;
+`
+export const Ex = styled.View`
+  	width:100%;
+	height: 100%;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+
+`
+export const ViewS = styled.View`
+  	width:${wp('100%')};
+	height: ${hp('10%')};
+`
+
+export const ContainerScroll = styled.ScrollView`
+
 `
 
 export const PerfilO = styled.Image`
