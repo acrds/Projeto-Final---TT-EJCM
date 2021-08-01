@@ -10,7 +10,8 @@ export default function Perfil () {
             <BackgroundApp>
                 <SectionTop>
                     <H1>Perfil</H1>
-                    <Logout source={require('../../../assets/logout.png')}></Logout>
+			<TouchableOpacity>
+                    <Logout source={require('../../../assets/logout.png')}></Logout></TouchableOpacity>
                 </SectionTop>
                 <BackFoto>
                     <GroupCenter>
