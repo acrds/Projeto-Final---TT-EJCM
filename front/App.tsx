@@ -5,13 +5,18 @@ import Cadastro from "./src/pages/cadastro";
 import Home from './src/pages/home';
 import Favoritos from './src/pages/favoritos';
 import Carrinho from './src/pages/carrinho';
+import PaymentMethod from './src/pages/paymentMethod';
+import Compra from './src/pages/compra';
 
 
 export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Carrinho/>
+      
+      
+      <Compra/>
+
     </View>
   );
 }
