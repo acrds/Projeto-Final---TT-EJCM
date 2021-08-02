@@ -183,3 +183,12 @@ export const BotaoAvaliar = styled.TouchableOpacity`
     font-weight:600;
     border-Radius:10;
 `
+export const AbsoluteC = styled.View`
+    position: absolute;
+    right: 0px;
+    top:60%;`
+
+export const BaloesC = styled.Image`
+    width: 130px;
+    height: 290px;`
+

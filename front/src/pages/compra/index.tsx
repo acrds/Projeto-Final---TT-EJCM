@@ -25,7 +25,9 @@ import {CabecalhoCompra,
         NumTotal,
         Endereco,
         TextoEndereco,
-        BotaoAvaliar
+        BotaoAvaliar,
+        AbsoluteC,
+        BaloesC
     
 } from './styles';
 
@@ -75,7 +77,9 @@ export default function Compra(){
                 </Endereco>
 
                 <BotaoAvaliar>Avaliar</BotaoAvaliar>
-
+                <AbsoluteC>
+                <BaloesC source={require('../../../assets/baloesPay.png')}/>
+                </AbsoluteC>
             
             </BackGroundCompra>
             <NavegacaoCompra>
