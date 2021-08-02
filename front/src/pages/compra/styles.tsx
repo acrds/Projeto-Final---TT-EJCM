@@ -159,7 +159,8 @@ export const Endereco = styled.View`
     width: ${wp('80%')};
     height: ${hp('10%')};
     align-items: left;
-    margin-left:10%`
+    margin-left:10%;
+    justify-content:center;`
 export const TextoEndereco = styled.Text`
     font-size: 0.9em;
     color: #073B4C;
@@ -168,4 +169,17 @@ export const TextoEndereco = styled.Text`
     margin-top:3%;
     margin-left:3%;`
 
-export const BotaoAvaliar = styled.TouchableOpacity``
+export const BotaoAvaliar = styled.TouchableOpacity`
+    width: ${wp('30%')};
+    height: ${hp('5%')};
+    align-items: left;
+    margin-left:35%;
+    margin-top:5%;
+    background-color:#AFD2D4;
+    color:#118AB2;
+    align-items: center;
+    justify-content:center;
+    font-family: Signika;
+    font-weight:600;
+    border-Radius:10;
+`
