@@ -15,12 +15,17 @@ import Produto from './src/pages/produto';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { StyleSheet, Text, View } from 'react-native';
 import Cadastro from "./src/pages/cadastro";
+import Home from './src/pages/home';
+import Favoritos from './src/pages/favoritos';
+import Compra from './src/pages/compra';
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 function HomeTabs() {
   return (
+<<<<<<< HEAD
     <Tab.Navigator tabBarOptions={{ showLabel: false, activeTintColor: '#ef4767', inactiveTintColor: '#f3f1e2', activeBackgroundColor: '#073b4c', inactiveBackgroundColor: '#073b4c' }}>
 
       <Tab.Screen name="Home" component={Login} options={{ tabBarIcon: ({ color, size }) => (<VscHome color={color} size={'27px'} />) }} />
@@ -30,6 +35,14 @@ function HomeTabs() {
       <Tab.Screen name="Inserir_Anuncio" component={Inserir_Anuncio} options={{ tabBarIcon: ({ color }) => (<FiPlus color={color} size={'25px'} />) }} />
 
       <Tab.Screen name="Carrinho" component={Inserir_Anuncio} options={{ tabBarIcon: ({ color }) => (<FiShoppingCart color={color} size={'25px'} />) }} />
+=======
+    <View style={styles.container}>
+      <StatusBar style="auto" />
+      <Home/>
+    </View>
+  );
+}
+>>>>>>> feature/front/Gabriela/criando-tela-de-home
 
       <Tab.Screen name="Perfil" component={Perfil} options={{ tabBarIcon: ({ color }) => (<BiUser color={color} size={'25px'} />) }} />
     </Tab.Navigator>
