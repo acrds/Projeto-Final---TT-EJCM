@@ -76,7 +76,7 @@ export default function Compra(){
                     <TextoEndereco>Rua R, 108 - 12345-678</TextoEndereco>
                 </Endereco>
 
-                <BotaoAvaliar>Avaliar</BotaoAvaliar>
+                <BotaoAvaliar>Voltar</BotaoAvaliar>
                 <AbsoluteC>
                 <BaloesC source={require('../../../assets/baloesPay.png')}/>
                 </AbsoluteC>
