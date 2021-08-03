@@ -11,6 +11,7 @@ export const BackGroundHome = styled.View `
 export const Barrabusca = styled.TextInput `
     background-color:#D1D28D;
     border-Radius: 20;
+    text-align:center;
     justify-content:center;
     `
 export const Busca = styled.View `
@@ -22,7 +23,7 @@ export const Busca = styled.View `
     height: ${hp('3%')};
     padding-top:4%;
     padding-bottom:4%;
-    margin-top:9%;
+    margin-top:4%;
     margin-left:40%;
     border-Radius: 20;
     
