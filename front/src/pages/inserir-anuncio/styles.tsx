@@ -1,10 +1,12 @@
 import styled from 'styled-components/native';
+
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export const BackgroundApp = styled.View ` 
 background-color: #f3f1e2;
 width: ${wp('100%')};
-height: ${hp('100%')};
+height: auto;
+min-height:${hp('100%')};
 font-family: Signika;
 `
 export const SectionTop = styled.View ` 
@@ -64,6 +66,7 @@ export const Input = styled.TextInput`
     margin-bottom:${hp('2%')};
     width:${wp('85%')};
 `
+
 export const Label = styled.Text ` 
 text-align: left;
 color:  #118ab2;
@@ -117,3 +120,13 @@ margin-top:${hp('2%')};
 
 export const TextSelecionar = styled.Text`
 color: rgb(17,138,178);`
+
+export const ViewS = styled.View`
+  	width:${wp('100%')};
+	height: ${hp('5%')};
+`
+
+export const ContainerScroll = styled.ScrollView`
+
+	
+`
