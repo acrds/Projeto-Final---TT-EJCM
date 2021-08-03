@@ -24,6 +24,14 @@ justify-content: center;
 align-items: flex-start;
 font-family: Signika;
 `
+export const Row = styled.View ` 
+width: ${wp('100%')};
+height: ${hp('10%')};
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+backgound-color:red;`
 
 export const H1 = styled.Text ` 
 text-align: left;
@@ -43,7 +51,7 @@ export const Button = styled.TouchableOpacity `
 
 padding: 20px 45px;
 border-radius: 10px;
-background-color: white;
+background-color: #F3F1E2;
 font-size: 1em;
 font-weight: 600;
 color: #118ab2;
@@ -55,7 +63,7 @@ margin-bottom: 10%;
 `
 export const Input = styled.TextInput`
     outline-width:0px;
-    border-bottom-color: #ffffff;
+    border-bottom-color: #F3F1E2;
     border-bottom-style: solid;
     border-bottom-width: 4px;
     width: 80%;
