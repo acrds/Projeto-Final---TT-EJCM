@@ -47,7 +47,7 @@ color: #040d10;
 font-size: 1em;
 font-weight: 600;
 `
-export const Button = styled.TouchableOpacity ` 
+export const Botao = styled.TouchableOpacity ` 
 
 padding: 20px 45px;
 border-radius: 10px;
