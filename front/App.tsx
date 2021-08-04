@@ -12,6 +12,8 @@ import { useFonts } from 'expo-font';
 import Inserir_Anuncio from './src/pages/inserir-anuncio';
 import Perfil from './src/pages/perfil';
 import Produto from './src/pages/produto';
+import Editar_Cadastro1 from './src/pages/editar-cadastro-1';
+import Editar_Cadastro2 from './src/pages/editar-cadastro-2'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 const Tab = createBottomTabNavigator();
@@ -43,13 +45,8 @@ export default function App() {
     Signika: require('../front/assets/assetsFonts/Signika.ttf'),
   })
   return ( 
-    <NavigationContainer >
-      <Stack.Navigator screenOptions={{headerShown:false}}>
-          <Tab.Screen name="MenuTabs" component={HomeTabs} options={{
-          tabBarBadge: 3 
-        }}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+	<Editar_Cadastro2/>
+  
       
   );
 }

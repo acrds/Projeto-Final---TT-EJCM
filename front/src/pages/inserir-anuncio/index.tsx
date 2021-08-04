@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TextInput, TouchableOpacity, Text, Image } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-import { TextInputMask } from 'react-native-masked-text'
+
 import { BackgroundApp, SectionTop, H1, ButtonCancelar, TextCancelar, BackCinza, TextRosa, Label, Input, BackForm, BackCenter, ButtonEnviar, TextEnviar, Camera, TextSelecionar, ButtonSelecionar, ViewS, ContainerScroll } from './styles'
 
 
@@ -104,10 +104,8 @@ export default function Inserir_Anuncio () {
                 <Controller
                     control={control}
                     render={({ field: { onBlur, onChange, value } }) => (
-                        <TextInputMask style={{paddingTop:'20px', outlineWidth:'0px', borderBottom:'1px solid #118ab2', width:'95%'}}
-				type={'datetime'}
-                            placeholder='R$'
-				options={{format:'DD,MM'}}
+                        <Input 
+				
                             onBlur={onBlur}
                             onChangeText={(value: any) => onChange(value)}
                             value={value} />
