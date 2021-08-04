@@ -18,8 +18,9 @@ import Editar_Cadastro3 from './src/pages/editar-cadastro-3';
 import Cadastro from "./src/pages/cadastro";
 import Home from './src/pages/home';
 import Favoritos from './src/pages/favoritos';
-/*import Compra from './src/pages/compra';*/
-
+import Carrinho from './src/pages/carrinho';
+import PaymentMethod from './src/pages/paymentMethod';
+import Compra from './src/pages/compra';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -37,6 +38,7 @@ function HomeTabs(){
       <Tab.Screen name="Favoritos" component={Perfil} options={{ tabBarIcon: ({ color }) => (<BsHeart color={color} size={'24px'} />) }} />
 
       <Tab.Screen name="Inserir_Anuncio" component={Inserir_Anuncio} options={{ tabBarIcon: ({ color }) => (<FiPlus color={color} size={'25px'} />) }} />
+
 
       <Tab.Screen name="Carrinho" component={Inserir_Anuncio} options={{ tabBarIcon: ({ color }) => (<FiShoppingCart color={color} size={'25px'} />) }} />
 
