@@ -16,8 +16,13 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { StyleSheet, Text, View } from 'react-native';
 import Cadastro from "./src/pages/cadastro";
 import Home from './src/pages/home';
-import Favoritos from './src/pages/favoritos';
-import Compra from './src/pages/compra';
+
+
+/*import Favoritos from './src/pages/favoritos';
+import Compra from './src/pages/compra';*/
+
+
+
 
 
 const Tab = createBottomTabNavigator();
@@ -25,49 +30,38 @@ const Stack = createStackNavigator();
 
 function HomeTabs() {
   return (
-<<<<<<< HEAD
     <Tab.Navigator tabBarOptions={{ showLabel: false, activeTintColor: '#ef4767', inactiveTintColor: '#f3f1e2', activeBackgroundColor: '#073b4c', inactiveBackgroundColor: '#073b4c' }}>
 
-      <Tab.Screen name="Home" component={Login} options={{ tabBarIcon: ({ color, size }) => (<VscHome color={color} size={'27px'} />) }} />
+      <Tab.Screen name="Home" component={Login} options={{ tabBarIcon: ({ color, size }) => (<VscHome color={color} size={'27px'} />) }} /> 
 
       <Tab.Screen name="Favoritos" component={Perfil} options={{ tabBarIcon: ({ color }) => (<BsHeart color={color} size={'24px'} />) }} />
 
       <Tab.Screen name="Inserir_Anuncio" component={Inserir_Anuncio} options={{ tabBarIcon: ({ color }) => (<FiPlus color={color} size={'25px'} />) }} />
 
       <Tab.Screen name="Carrinho" component={Inserir_Anuncio} options={{ tabBarIcon: ({ color }) => (<FiShoppingCart color={color} size={'25px'} />) }} />
-=======
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <Home/>
-    </View>
-  );
-}
->>>>>>> feature/front/Gabriela/criando-tela-de-home
 
       <Tab.Screen name="Perfil" component={Perfil} options={{ tabBarIcon: ({ color }) => (<BiUser color={color} size={'25px'} />) }} />
     </Tab.Navigator>
-
+  )
+}
 
 export default function App() {
-    const [loaded] = useFonts({
-      Signika: require('../front/assets/assetsFonts/Signika.ttf')
-    })
-      
-    return(
-      <View style = { styles.container } >
-        <StatusBar style="auto" />
-        <Cadastro />
+  const [loaded] = useFonts({
+    Signika: require('../front/assets/assetsFonts/Signika.ttf')
+  })
 
-        <NavigationContainer >
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Tab.Screen name="MenuTabs" component={HomeTabs} options={{
-              tabBarBadge: 3
-            }} />
-          </Stack.Navigator>
-        </NavigationContainer>
+  return (
 
-      </View >
-    );
-  }
+
+    <NavigationContainer >
+      <Stack.Navigator screenOptions={{headerShown:false}}>
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="HomeTabs" component={HomeTabs} />
+        <Stack.Screen name="Cadastro" component={Cadastro} />
+        <Stack.Screen name="Home" component={Home}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+
+  );
 
 }
