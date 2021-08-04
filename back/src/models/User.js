@@ -51,6 +51,7 @@ User.associate = function(models) {
     User.hasOne(models.ShopList); 
     User.hasOne(models.Photo);
     User.belongsToMany(models.Product, {through: 'favorite_list', as: 'favorite_product', foreignKey: 'userId'}) 
+    User.hasMany(models.Product);
 }
 
 module.exports = User;
