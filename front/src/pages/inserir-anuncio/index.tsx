@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, TextInput, TouchableOpacity, Text, Image } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-import { BackgroundApp, SectionTop, H1, ButtonCancelar, TextCancelar, BackCinza, TextRosa, Label, Input, BackForm, BackCenter, ButtonEnviar, TextEnviar, Camera, TextSelecionar, ButtonSelecionar } from './styles'
+
+import { BackgroundApp, SectionTop, H1, ButtonCancelar, TextCancelar, BackCinza, TextRosa, Label, Input, BackForm, BackCenter, ButtonEnviar, TextEnviar, Camera, TextSelecionar, ButtonSelecionar, ViewS, ContainerScroll } from './styles'
 
 
 export default function Inserir_Anuncio () {
@@ -19,18 +20,21 @@ export default function Inserir_Anuncio () {
     }
 
     return(
+<ContainerScroll>
        <BackgroundApp>
+	
            <SectionTop>
                <H1>Inserir Anúncio</H1>
                <ButtonCancelar>
                     <TextCancelar>Cancelar</TextCancelar>
                 </ButtonCancelar>
            </SectionTop>
+
         <View>
             <BackCinza>
             <Camera source={require('../../../assets/camera.png')}></Camera>
-            <TextRosa>Incluir fotos</TextRosa>
-            <Text>0 a 5 adicionadas</Text>
+            <TextRosa>Incluir foto</TextRosa>
+            <Text>0 a 1 adicionadas</Text>
 
             </BackCinza>
         </View>
@@ -95,13 +99,13 @@ export default function Inserir_Anuncio () {
             </View>
             {errors.cep && <Text style={{color: 'red'}}> {errors.cep.message}</Text>}
             
-            <View>
-                <Label>Preço R$</Label>
+            
+                <Label>Preço</Label>
                 <Controller
                     control={control}
                     render={({ field: { onBlur, onChange, value } }) => (
-                        <Input
-                            placeholder=''
+                        <Input 
+				
                             onBlur={onBlur}
                             onChangeText={(value: any) => onChange(value)}
                             value={value} />
@@ -112,8 +116,9 @@ export default function Inserir_Anuncio () {
                     }}
                     name="preco"
                     defaultValue="" />
-            </View>
+            
             {errors.preco&& <Text style={{color: 'red'}}> {errors.preco.message}</Text>}
+            
             
         </BackForm>
         <BackCenter>
@@ -126,7 +131,8 @@ export default function Inserir_Anuncio () {
                 <TextEnviar>Enviar Anúncio</TextEnviar>
             </ButtonEnviar>
          </BackCenter>
-        </BackgroundApp>
+	<ViewS></ViewS></BackgroundApp>
+   </ContainerScroll>
 
     );
 }
