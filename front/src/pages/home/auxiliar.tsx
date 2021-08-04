@@ -119,4 +119,13 @@ function CardServico(){
 
         <ImgProduto source={produtos.imagem}/>
 
+<<<<<<< HEAD
         <ImgProduto source={require(produtos.imagem)}/> */}
+=======
+        <ImgProduto source={require(produtos.imagem)}/>
+
+        <TextServico>
+                        <Text>{` . R$ ${servicos.preco}`}</Text>
+                        <Text>{servicos.local}</Text> 
+                    </TextServico>
+>>>>>>> feature/front/Gabriela/criando-tela-de-favoritos

@@ -14,12 +14,14 @@ import Perfil from './src/pages/perfil';
 import Produto from './src/pages/produto';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { StyleSheet, Text, View } from 'react-native';
+
 import Cadastro from "./src/pages/cadastro";
 import Home from './src/pages/home';
+import Favoritos from './src/pages/favoritos';
 
 
-/*import Favoritos from './src/pages/favoritos';
-import Compra from './src/pages/compra';*/
+
+/*import Compra from './src/pages/compra';*/
 
 
 
