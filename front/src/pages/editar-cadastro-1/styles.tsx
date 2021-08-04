@@ -26,8 +26,9 @@ width: ${wp('100%')};
 height: ${hp('8%')};
 display: flex;
 flex-direction: row;
-justify-content: space-around;
+justify-content: flex-start;
 align-items:  center;
+padding-left:${wp('3%')};
 `
 
 export const Row = styled.View ` 
@@ -88,8 +89,14 @@ export const H1 = styled.Text `
 color:#073b4c;
 font-size:1.5em;
 font-weight: bold;
+margin-left:${wp('15%')};
 `
+export const H2 = styled.Text ` 
+color:#073b4c;
+font-size:1.5em;
+font-weight: bold;
 
+`
 
 export const Input = styled.TextInput`
     outline-width:0px;

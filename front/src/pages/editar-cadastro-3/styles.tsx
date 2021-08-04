@@ -5,19 +5,18 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 export const BackgroundApp = styled.View ` 
 background-color: #f3f1e2;
 width: ${wp('100%')};
-height: auto;
-min-height:${hp('100%')};
+height:${hp('100%')};
 font-family: Signika;
 `
 export const Confete = styled.Image`
 width: 200px;
-height: 350px;
+height: 200px;
 `
 export const Absolute = styled.View`
     position: absolute;
-    left: -60px;
-    bottom:-110px;
-	transform:rotate(45deg);	
+    left: -40px;
+    bottom:45px;
+	transform:rotate(130deg);	
     z-index:1;
 `
 
@@ -25,6 +24,49 @@ export const SectionTop = styled.View `
 background-color: #FFC94D;
 width: ${wp('100%')};
 height: ${hp('8%')};
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+align-items:  center;
+`
+
+export const Row = styled.View ` 
+margin-top:${hp('4%')};
+width: ${wp('30%')};
+height: ${hp('8%')};
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+align-items:  center;
+`
+
+export const BackButtons = styled.View ` 
+margin-top:${hp('4%')};
+width: ${wp('100%')};
+height: ${hp('12%')};
+display: flex;
+flex-direction: collumn;
+justify-content: center;
+align-items:  center;
+`
+
+export const Ball = styled.View ` 
+background-color: #c4c4c4;
+border-radius:50%;
+width:20px;
+height: 20px;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+align-items:  center;
+
+`
+
+export const BallS = styled.View ` 
+background-color: #ef4767;
+border-radius:50%;
+width:20px;
+height: 20px;
 display: flex;
 flex-direction: row;
 justify-content: space-around;
@@ -101,7 +143,8 @@ padding: 10px 20px;
 color: #f3f1e2;
 background-color: rgba(17, 138,178,.4);
 border-radius:15px;
-margin-top:${hp('10%')};
+margin-bottom:${hp('2%')};
+z-index:8;
 `
 
 export const TextEnviar = styled.Text`

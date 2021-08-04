@@ -13,7 +13,8 @@ import Inserir_Anuncio from './src/pages/inserir-anuncio';
 import Perfil from './src/pages/perfil';
 import Produto from './src/pages/produto';
 import Editar_Cadastro1 from './src/pages/editar-cadastro-1';
-import Editar_Cadastro2 from './src/pages/editar-cadastro-2'
+import Editar_Cadastro2 from './src/pages/editar-cadastro-2';
+import Editar_Cadastro3 from './src/pages/editar-cadastro-3';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 const Tab = createBottomTabNavigator();
@@ -45,7 +46,7 @@ export default function App() {
     Signika: require('../front/assets/assetsFonts/Signika.ttf'),
   })
   return ( 
-	<Editar_Cadastro2/>
+	<Editar_Cadastro1/>
   
       
   );

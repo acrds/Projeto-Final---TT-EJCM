@@ -39,6 +39,17 @@ flex-direction: row;
 justify-content: space-around;
 align-items:  center;
 `
+
+export const BackButtons = styled.View ` 
+margin-top:${hp('4%')};
+width: ${wp('100%')};
+height: ${hp('8%')};
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+align-items:  center;
+`
+
 export const Ball = styled.View ` 
 background-color: #c4c4c4;
 border-radius:50%;

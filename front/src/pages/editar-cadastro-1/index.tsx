@@ -2,7 +2,8 @@ import React from 'react';
 import { View, TextInput, TouchableOpacity, Text, Image } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { TextInputMask } from 'react-native-masked-text'
-import { BackgroundApp, SectionTop, H1, ButtonCancelar, TextCancelar, BackCinza, TextRosa, Label, Input, BackForm, BackCenter, ButtonEnviar, TextEnviar, Camera, TextSelecionar, ButtonSelecionar, ViewS, ContainerScroll, BackTitle, SectionBottom, Absolute, Confete, Row, Ball, BallS } from './styles'
+import { FiArrowLeft } from 'react-icons/fi'
+import { BackgroundApp, SectionTop, H1, H2, ButtonCancelar, TextCancelar, BackCinza, TextRosa, Label, Input, BackForm, BackCenter, ButtonEnviar, TextEnviar, Camera, TextSelecionar, ButtonSelecionar, ViewS, ContainerScroll, BackTitle, SectionBottom, Absolute, Confete, Row, Ball, BallS } from './styles'
 
 
 export default function Editar_Cadastro1 () {
@@ -24,11 +25,14 @@ export default function Editar_Cadastro1 () {
        <BackgroundApp>
 	
            <SectionTop>
+         
+          <TouchableOpacity> <FiArrowLeft size={'20px'}>
+           </FiArrowLeft></TouchableOpacity>
                <H1>Dados da Conta</H1>
            </SectionTop>
 
         <BackTitle>
-		<H1>Dados do Usuário</H1>
+		<H2>Dados do Usuário</H2>
 	</BackTitle>
            
          <BackForm>

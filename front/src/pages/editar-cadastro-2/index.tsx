@@ -2,7 +2,7 @@ import React from 'react';
 import { View, TextInput, TouchableOpacity, Text, Image } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { TextInputMask } from 'react-native-masked-text'
-import { BackgroundApp, SectionTop, H1, ButtonCancelar, TextCancelar, BackCinza, TextRosa, Label, Input, BackForm, BackCenter, ButtonEnviar, TextEnviar, Camera, TextSelecionar, ButtonSelecionar, ViewS, ContainerScroll, BackTitle, SectionBottom, Absolute, Confete, Row, Ball, BallS } from './styles'
+import { BackgroundApp, SectionTop, H1, ButtonCancelar, TextCancelar, BackCinza, TextRosa, Label, Input, BackForm, BackCenter, ButtonEnviar, TextEnviar, Camera, TextSelecionar, ButtonSelecionar, ViewS, ContainerScroll, BackTitle, SectionBottom, Absolute, Confete, Row, Ball, BallS, BackButtons } from './styles'
 
 
 export default function Editar_Cadastro1 () {
@@ -73,10 +73,17 @@ export default function Editar_Cadastro1 () {
         </BackForm>
         <BackCenter>
                
-        
-            <ButtonEnviar onPress={handleSubmit(onSubmit)}>
-                <TextEnviar>Próximo</TextEnviar>
-            </ButtonEnviar>
+<BackButtons>    
+			<ButtonEnviar>
+                	<TextEnviar>Anterior</TextEnviar>
+            </ButtonEnviar>    
+            	<ButtonEnviar onPress={handleSubmit(onSubmit)}>
+                	<TextEnviar>Próximo</TextEnviar>
+            	</ButtonEnviar>
+		
+</BackButtons>
+
+
 <Row>
 <Ball></Ball><BallS></BallS><Ball></Ball>
 </Row>

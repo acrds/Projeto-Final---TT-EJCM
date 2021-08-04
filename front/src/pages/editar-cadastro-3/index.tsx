@@ -2,10 +2,10 @@ import React from 'react';
 import { View, TextInput, TouchableOpacity, Text, Image } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { TextInputMask } from 'react-native-masked-text'
-import { BackgroundApp, SectionTop, H1, ButtonCancelar, TextCancelar, BackCinza, TextRosa, Label, Input, BackForm, BackCenter, ButtonEnviar, TextEnviar, Camera, TextSelecionar, ButtonSelecionar, ViewS, ContainerScroll, BackTitle, SectionBottom, Absolute, Confete } from './styles'
+import { BackgroundApp, SectionTop, H1, ButtonCancelar, TextCancelar, BackCinza, TextRosa, Label, Input, BackForm, BackCenter, ButtonEnviar, TextEnviar, Camera, TextSelecionar, ButtonSelecionar, ViewS, ContainerScroll, BackTitle, SectionBottom, Absolute, Confete, Row, Ball, BallS, BackButtons } from './styles'
 
 
-export default function Editar_Cadastro1 () {
+export default function Editar_Cadastro3 () {
     const {control, handleSubmit, formState: {errors} } = useForm({ mode:'onTouched'});
 
     const onSubmit = (data: FormData) =>{
@@ -13,10 +13,8 @@ export default function Editar_Cadastro1 () {
     }
     
     interface FormData{
-        titulo: string;
-        descricao: string;
-        cep: string;
-        preco: string;
+        senhaAtual: string;
+        senhaNova: string;
     }
 
     return(
@@ -28,12 +26,12 @@ export default function Editar_Cadastro1 () {
            </SectionTop>
 
         <BackTitle>
-		<H1>Dados do Usuário</H1>
+		<H1>Senha do Usuário</H1>
 	</BackTitle>
            
          <BackForm>
              <View>
-             <Label>Nome completo</Label>
+             <Label>Senha Atual</Label>
                 <Controller
                     control={control}
                     render={({ field: { onBlur, onChange, value } }) => (
@@ -44,13 +42,13 @@ export default function Editar_Cadastro1 () {
                             value={value} />
                     )}
                     
-                    name="nome"
+                    name="senhaAtual"
                     defaultValue="" />
                 </View>
-            {errors.nome && <Text style={{color: 'red'}}> {errors.nome.message}</Text>}
+            
 
             <View>
-                <Label>Apelido</Label>
+                <Label>Nova Senha</Label>
                 <Controller
                     control={control}
                     render={({ field: { onBlur, onChange, value } }) => (
@@ -58,41 +56,50 @@ export default function Editar_Cadastro1 () {
                             placeholder=''
                             onBlur={onBlur}
                             onChangeText={(value: any) => onChange(value)}
-                            value={value} />
+                            value={value}
+			    defaultValue="" />
                     )}
                     
-                    name="descricao"
+                    name="senhaNova"
                     defaultValue="" />
             </View>
-            {errors.apelido && <Text style={{color: 'red'}}> {errors.descricao.message}</Text>}
+            
+           <View>
+                <Label>Confirmação de Senha</Label>
+                <Controller
+                    control={control}
+                    render={({ field: { onBlur, onChange, value } }) => (
+                        <Input
+                            placeholder=''
+                            onBlur={onBlur}
+                            onChangeText={(value: any) => onChange(value)}
+                            value={value}
+			    defaultValue="" />
+                    )}
+                    
+                    name="Confirmacao"
+                    defaultValue="" />
+            </View>
            
-            <View>
-                <Label>CPF/CNPJ</Label>
-                <Controller
-                    control={control}
-                    render={({ field: { onBlur, onChange, value } }) => (
-                        <Input
-                            placeholder=''
-                            onBlur={onBlur}
-                            onChangeText={(value: any) => onChange(value)}
-                            value={value} />
-                    )}
-                    
-                    name="cpf_cnpj"
-                    defaultValue="" />
-            </View>
-            {errors.cpf_cnpj && <Text style={{color: 'red'}}> {errors.cpf_cnpj.message}</Text>}
-            
-        
-            
+               
             
         </BackForm>
         <BackCenter>
                
-        
-            <ButtonEnviar onPress={handleSubmit(onSubmit)}>
-                <TextEnviar>Próximo</TextEnviar>
-            </ButtonEnviar>
+<BackButtons>    
+			<ButtonEnviar>
+                	<TextEnviar>Anterior</TextEnviar>
+            </ButtonEnviar>    
+            	<ButtonEnviar onPress={handleSubmit(onSubmit)}>
+                	<TextEnviar>Salvar alterações</TextEnviar>
+            	</ButtonEnviar>
+		
+</BackButtons>
+
+
+<Row>
+<Ball></Ball><Ball></Ball><BallS></BallS>
+</Row>
          </BackCenter>
 
 <SectionBottom></SectionBottom>
