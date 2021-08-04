@@ -13,6 +13,7 @@ const create = async(req,res) => {
           const shopList = await ShopList.create(req.body);
           const user = await User.findByPk(req.body.userId);
           await shopList.setUser(user);
+          await user.setShopList(shopList);
           return res.status(201).json({message: "Carrinho cadastrado com sucesso!", ShopList: shopList});
       }catch(err){
           res.status(500).json({error: err + "!", message: "Erro ao criar novo Carrinho."});
@@ -69,37 +70,24 @@ const concludeSale = async(req,res) => {
     const {id} = req.params;
     try {
         const shopList = await ShopList.findByPk(id);
-        var sale = await Sale.findOne({where: {shopListId: shopList.id}});
         const product_ShopLists = await Product_ShopList.findAll({where: {shopListId: id}});
         const price = await shopList.price;
-        if (sale){
-            sale.update(
-                {payment_method: req.body.payment_method, 
-                    shipping: req.body.shipping
-                });
-            await shopList.update({price: 0.00}, {where: {id: id}});
-            product_ShopLists.forEach(Product_ShopList.destroy);
-        }
-        else{
-            const newSale = await Sale.create(
-                {payment_method: req.body.payment_method, 
-                shipping: req.body.shipping
-            });
-            await newSale.setShopList(shopList);
-            await shopList.update({price: 0.00}, {where: {id: req.body.id}});
-            product_ShopLists.forEach(Product_ShopList.destroy);
-            sale = newSale;
-        }
-        const pathTemplate = path.resolve(__dirname, '..', '..', 'templates');
+        const sale = await Sale.create(
+            {payment_method: req.body.payment_method, 
+            shipping: req.body.shipping
+        });
+        await sale.setShopList(shopList);
 		const user = await User.findByPk(shopList.UserId);
+        const newShopList = await ShopList.create();
+        await user.setShopList(newShopList);
+        const pathTemplate = path.resolve(__dirname, '..', '..', 'templates');
 		readHtml(path.join(pathTemplate, "concludedSale.html"), (err,html)=>{
 			const template = hbs.compile(html);
 			const replacements = {
 				username: user.nickname,
-                cart: product_ShopLists,
                 subtotal: price,
                 shipping: sale.shipping,
-                price: sale.price
+                price: parseFloat(shopList.price) + parseFloat(sale.shipping)
 			};
 			const htmlToSend = template(replacements);
 			const message = {
