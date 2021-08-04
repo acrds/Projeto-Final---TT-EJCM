@@ -37,8 +37,6 @@ router.get('/listShop/:id', UserController.listedShop);
 router.get('/listPostedProducts/:id', UserController.listPostedProducts);
 router.get('/listReviews/:id', UserController.listMadeReviews);
 router.get('/listFavorites/:id', UserController.listFavorited);
-router.get('/listAsks/:id', UserController.listAsks);
-router.get('/listAnswers/:id', UserController.listAnswers);
 
 router.put('/users/:id', UserController.update);
 router.put('/disfavorProduct/:id', UserController.disfavor);
