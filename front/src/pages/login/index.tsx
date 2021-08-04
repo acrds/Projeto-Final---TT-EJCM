@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TextInput, TouchableOpacity, Text, Image } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-import { BackgroundApp, H1, Label, Button, Input, Container, TextSenha, ContainerBottom, Underline, Baloes, Absolute} from './styles';
+import { BackgroundApp, H1, Label, Button, Input, Container, TextSenha, ContainerBottom, Underline, Baloes, Absolute, Row} from './styles';
 
 export default function Login () {
     const {control, handleSubmit, formState: {errors} } = useForm({ mode:'onTouched'});
@@ -65,7 +65,7 @@ export default function Login () {
                     defaultValue="" />
             </View>
             {errors.senha && <Text style={{color: 'red'}}> {errors.senha.message}</Text>}
-            <TextSenha>Esqueci minha senha</TextSenha>
+           <TouchableOpacity> <TextSenha>Esqueci minha senha</TextSenha></TouchableOpacity>
         </Container>
         <br/><br/>
         <ContainerBottom>
@@ -73,7 +73,9 @@ export default function Login () {
                 <Button>Entrar</Button>
             </TouchableOpacity>
             <br/><br/>
-            <Text>Não possui conta? <Underline>Cadastre-se aqui.</Underline></Text>
+		<Row>
+            <Text>Não possui conta?  </Text> <TouchableOpacity><Underline>Cadastre-	se aqui.</Underline></TouchableOpacity>
+		</Row>
             </ContainerBottom> 
         </BackgroundApp>
 
