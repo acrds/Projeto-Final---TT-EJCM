@@ -76,8 +76,6 @@ router.delete('/partyTypes/:id', PartyTypeController.destroy)
 
 router.get('/private/getDetails', AuthController.getDetails);
 router.post('/login', AuthController.login);
-router.post('/forgot_password', AuthController.forgot_password);
-router.post('/reset_password', AuthController.reset_password);
 
 
 router.get('/products',ProductController.index);
