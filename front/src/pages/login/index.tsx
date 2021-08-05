@@ -11,7 +11,14 @@ export default function Login() {
     const navigation = useNavigation();
 
     const onSubmit = (data: FormData) => {
+        
         console.log(data);
+    }
+
+    const navegacaoTelaLogin = () => {
+        
+        navigation.navigate('Home');
+        
     }
 
     interface FormData {
@@ -73,7 +80,7 @@ export default function Login() {
             </Container>
             <br /><br />
             <ContainerBottom>
-                <Botao onPress={() => navigation.navigate('Home')}>Entrar</Botao>
+                <Botao onPress={(handleSubmit(onSubmit,navegacaoTelaLogin)) }>Entrar</Botao>
                 <br /><br />
                 <Row>
                     <Text >Não possui conta?  </Text> <TouchableOpacity><Underline onPress={() => navigation.navigate('Cadastro')}>Cadastre-se aqui.</Underline></TouchableOpacity>
