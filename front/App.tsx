@@ -53,6 +53,9 @@ export default function App() {
         <Stack.Screen name="Editar_Cadastro1" component={Editar_Cadastro1} />
         <Stack.Screen name="Editar_Cadastro2" component={Editar_Cadastro2} />
         <Stack.Screen name="Editar_Cadastro3" component={Editar_Cadastro3} /> 
+        <Stack.Screen name="PaymentMethod" component={PaymentMethod}/>
+        <Stack.Screen name="Compra" component={Compra}/>
+
       </Stack.Navigator>
     </NavigationContainer>
 

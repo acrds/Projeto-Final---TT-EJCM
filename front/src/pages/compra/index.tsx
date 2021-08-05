@@ -1,6 +1,8 @@
 import React from 'react';
 import { ImageComponent,  ScrollView, Text , TextInput, View, Button, Alert, StyleSheet, Pressable, TouchableWithoutFeedbackBase, TouchableOpacity} from 'react-native';
 import { BackGroundHome } from '../home/styles';
+import { BsChevronLeft } from "react-icons/bs";
+import { useNavigation } from '@react-navigation/native';
 
 import {CabecalhoCompra,
         BackGroundCompra,
@@ -38,10 +40,14 @@ import {CabecalhoCompra,
 
 
 export default function Compra(){
+    const navigation = useNavigation();
+    
     return(
 
         <>
             <CabecalhoCompra>
+            
+
                 
             </CabecalhoCompra>
             <BackGroundCompra>
@@ -76,7 +82,7 @@ export default function Compra(){
                     <TextoEndereco>Rua R, 108 - 12345-678</TextoEndereco>
                 </Endereco>
 
-                <BotaoAvaliar>Voltar</BotaoAvaliar>
+                <BotaoAvaliar onPress = {() => navigation.navigate("Home")}> Voltar </BotaoAvaliar>
                 <AbsoluteC>
                 <BaloesC source={require('../../../assets/baloesPay.png')}/>
                 </AbsoluteC>
