@@ -31,14 +31,13 @@ const upload = multer({ storage: storage,
  });
 
 
+
 router.get('/users',UserController.index);
 router.get('/users/:id',UserController.show);
 router.get('/listShop/:id', UserController.listedShop);
 router.get('/listPostedProducts/:id', UserController.listPostedProducts);
 router.get('/listReviews/:id', UserController.listMadeReviews);
 router.get('/listFavorites/:id', UserController.listFavorited);
-router.get('/listAsks/:id', UserController.listAsks);
-router.get('/listAnswers/:id', UserController.listAnswers);
 
 router.put('/users/:id', UserController.update);
 router.put('/disfavorProduct/:id', UserController.disfavor);
@@ -59,14 +58,12 @@ router.delete('/users/:id', UserController.destroy);
 router.delete('/photo/:id', UserController.removePhoto);
 
 
-
 router.get('/reviews',ReviewController.index);
 router.get('/reviews/:id',ReviewController.show);
 router.post('/reviews',ReviewController.create);
 router.put('/reviews/:id', ReviewController.update);
 router.get('/reviews/:id', adminMiddleware, ReviewController.destroy); 
 router.delete('/reviews/:id', ReviewController.destroy)
-
 
 
 router.get('/partyTypes',PartyTypeController.index);
@@ -79,6 +76,8 @@ router.delete('/partyTypes/:id', PartyTypeController.destroy)
 
 router.get('/private/getDetails', AuthController.getDetails);
 router.post('/login', AuthController.login);
+router.post('/forgot_password', AuthController.forgot_password);
+router.post('/reset_password', AuthController.reset_password);
 
 
 router.get('/products',ProductController.index);

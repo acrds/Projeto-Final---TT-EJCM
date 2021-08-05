@@ -95,11 +95,11 @@ const concludeSale = async(req,res) => {
 		readHtml(path.join(pathTemplate, "concludedSale.html"), (err,html)=>{
 			const template = hbs.compile(html);
 			const replacements = {
-				username: user.nickname,
+				username: user.name,
                 cart: product_ShopLists,
                 subtotal: price,
                 shipping: sale.shipping,
-                price: sale.price
+                price: shopList.price
 			};
 			const htmlToSend = template(replacements);
 			const message = {

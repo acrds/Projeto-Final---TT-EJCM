@@ -1,13 +1,13 @@
 const { response } = require('express');
+require('../config/dotenv')();
+
 const ShopList = require('../models/ShopList');
 const User = require('../models/User');
 const Product = require('../models/Product');
-const Question = require('../models/Question');
-const Review = require('../models/Review');
+const Auth = require("../config/auth");
 const Product_ShopList = require('../models/Product_Shoplist');
 const {validationResult} = require('express-validator');
 const Photo = require('../models/Photo');
-require('../config/dotenv')();
 const fsPromise = require('fs').promises;
 const path = require('path');
 const mailer = require('../config/mail').mailer;
@@ -33,7 +33,7 @@ const create = async(req,res) => {
         readHtml(path.join(pathTemplate, "cadastro.html"), (err,html)=>{
             const template = hbs.compile(html);
             const replacements = {
-                name: user.name
+                email: user.email
             };
             const htmlToSend = template(replacements);
             const message = {
@@ -129,9 +129,8 @@ const putOn = async(req,res) => {
     try{
         const user = await User.findByPk(id);
         const product = await Product.findByPk(req.body.ProductId);
-        const shopList = await ShopList.findByPk(req.body.ShopListId);
+        const shopList = await user.getShopList();
         if(shopList) {
-            await user.setShopList(shopList); 
             shopList.addProduct(product);
             Product_ShopList.update({quantity: req.body.quantity},{where: {productId: product.id, shopListId: shopList.id}});
             await shopList.update({price: parseFloat(shopList.price) + (parseFloat(product.price) * parseFloat(req.body.quantity))});
@@ -226,7 +225,7 @@ const listPostedProducts = async(req,res) => { //listar produtos anunciados
     const {id} = req.params;
     try{
         const user = await User.findByPk(id);
-        const postProduct = await user.getProduct(); 
+        const postProduct = await user.getProducts(); 
         return res.status(200).json({postProduct});
     }catch(err){
         return res.status(500),json("Erro");
@@ -252,7 +251,7 @@ const unmakeReview = async(req,res) => {
     const {id} = req.params;
     try{
         const user = await User.findByPk(id);
-        const Review = await Review.findByPk(req.body.ReviewId); 
+        const review = await Review.findByPk(req.body.ReviewId); 
         if(review) {
             await user.removeReview(review); 
             return res.status(200).json(user);
@@ -267,7 +266,7 @@ const listMadeReviews = async(req,res) => {
     const {id} = req.params;
     try{
         const user = await User.findByPk(id);
-        const makeReview = await user.getReview(); 
+        const makeReview = await user.getReviews(); 
         return res.status(200).json({makeReview});
     }catch(err){
         return res.status(500),json("Erro");
@@ -309,27 +308,6 @@ const listFavorited = async(req,res) => {
     }
 };
 
-const listAsks = async(req,res) => { //listar todas perguntas feitas
-    const {id} = req.params;
-    try{
-        const user = await User.findByPk(id);
-        const listAsks = await user.getUserMakesQuestion();
-        return res.status(200).json({listAsks});
-    }catch(err){
-        return res.status(500),json("Erro");
-    }
-};
-
-const listAnswers = async(req,res) => { //listar todas perguntas feitas
-    const {id} = req.params;
-    try{
-        const user = await User.findByPk(id);
-        const listAsks = await user.getUserAnswersQuestion();
-        return res.status(200).json({listAsks});
-    }catch(err){
-        return res.status(500),json("Erro");
-    }
-};
 
 const addPhotoUser = async(req, res) => {
 	try {
@@ -384,8 +362,6 @@ module.exports = {
     favorite,
     disfavor, 
     listFavorited,
-    listAsks,
-    listAnswers,
     updateQtdProduct,
     addPhotoUser,
     removePhoto
