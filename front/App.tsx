@@ -28,7 +28,6 @@ const Stack = createStackNavigator();
 function HomeTabs() {
   return (
     <Tab.Navigator tabBarOptions={{ showLabel: false, activeTintColor: '#ef4767', inactiveTintColor: '#f3f1e2', activeBackgroundColor: '#073b4c', inactiveBackgroundColor: '#073b4c' }}>
-      
       <Tab.Screen name="Home" component={Home} options={{ tabBarIcon: ({ color, size }) => (<VscHome color={color} size={'27px'} />) }}/>
       <Tab.Screen name="Favoritos" component={Favoritos} options={{ tabBarIcon: ({ color }) => (<BsHeart color={color} size={'24px'} />) }}/>
       <Tab.Screen name="InserirAnuncio" component={Inserir_Anuncio} options={{ tabBarIcon: ({ color }) => (<FiPlus color={color} size={'25px'} />) }} />
@@ -50,6 +49,8 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="HomeTabs" component={HomeTabs} />
+        <Stack.Screen name="Produto" component={Produto} />
+
         
         {/*<Stack.Screen name="Favoritos" component={Favoritos} />
         <Stack.Screen name="Editar_Cadastro1" component={Editar_Cadastro1} />

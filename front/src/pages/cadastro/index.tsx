@@ -42,9 +42,9 @@ export default function Cadastro (){
     return (
         <BackGroundCadastro>
 
-            <View>
+            <TouchableOpacity style ={{marginLeft:'5%'}} onPress = {() => navigation.navigate("Login")}>
                 <BsChevronLeft color ={"#073B4C"} size={"30px"}/>
-            </View>
+            </TouchableOpacity>
 
             <Absolute>
             <Baloes source={require('../../../assets/baloes.png')}></Baloes>
