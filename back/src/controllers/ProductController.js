@@ -129,6 +129,28 @@ const removePhoto = async(req, res) => {
 	}
 };
 
+const getPhotoProduct = async(req, res) => {
+    try{
+        const {id} = req.params;
+        const product = await Product.findByPk(id);
+		const photo  = await product.getPhoto();
+        return res.status(200).json(photo.path);
+    } catch (err){
+        return res.status(500).json(e + "!");
+    }
+};
+
+const getProductPoster = async(req, res) => {
+    try{
+        const {id} = req.params;
+        const product = await Product.findByPk(id);
+		const user  = await product.getUser();
+        return res.status(200).json(user);
+    } catch (err){
+        return res.status(500).json(e + "!");
+    }
+};
+
 module.exports = {
     index,
     show,
@@ -139,5 +161,7 @@ module.exports = {
     removeRelationPartyType,
     findByType,
     addPhotoProduct,
-    removePhoto
+    removePhoto,
+    getPhotoProduct,
+    getProductPoster
 };
