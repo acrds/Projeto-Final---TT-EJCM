@@ -4,7 +4,7 @@ import { View, TextInput, TouchableOpacity, Text, Image, ScrollView } from 'reac
 import { BiMap } from "react-icons/bi";
 import { BsX } from "react-icons/bs";
 import { useForm, Controller } from 'react-hook-form';
-import { BackgroundApp, SectionTop, ButtonEditar, TextEditar, ImageProduto, Title, BackIcon, TextCategoria, BackText, Desc, Anunciado, BackPreco, Carrinho, TextCarrinho, BackComentario, BackTextComentario, ContadorComentario, FotoName, PerfilN, NameN, Input, PerfilO, NameO, BackTextComentarioFeito, TextPreco, White, ContainerScroll, Comentario, TextComentarioFeito, Location, LocationText, ViewS, Ex, ButtonEnviar, TextEnviar, Direita } from './styles';
+import { BackgroundApp, SectionTop, ImageProduto, Title, BackIcon, TextCategoria, BackText, Desc, Anunciado, BackPreco, Carrinho, TextCarrinho, BackComentario, BackTextComentario, ContadorComentario, FotoName, PerfilN, NameN, Input, PerfilO, NameO, BackTextComentarioFeito, TextPreco, White, ContainerScroll, Comentario, TextComentarioFeito, Location, LocationText, ViewS, Ex, ButtonEnviar, TextEnviar, Direita } from './styles';
 import { BsChevronLeft } from "react-icons/bs";
 import { useNavigation } from '@react-navigation/core';
 import { Absolute } from '../login/styles';
@@ -26,12 +26,10 @@ export default function Produto() {
         <BackgroundApp>
             <ContainerScroll>
                 <SectionTop>
-                    <TouchableOpacity style ={{marginRight:'70%'}} onPress = {() => navigation.navigate("Home")}>
+                    <TouchableOpacity style ={{marginRight:'85%'}} onPress = {() => navigation.navigate("Home")}>
                         <BsChevronLeft color={"#073B4C"} size={"30px"}/>
                     </TouchableOpacity>
-                    <ButtonEditar>
-                        <TextEditar>Editar</TextEditar>
-                    </ButtonEditar>
+                    
                 </SectionTop>
                 <ImageProduto source={require('../../../assets/mundoBita.jpg')}></ImageProduto>
                 <Title>Cup Cakes mundo Bita</Title>
