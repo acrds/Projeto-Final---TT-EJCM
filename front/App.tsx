@@ -50,12 +50,9 @@ export default function App() {
         <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="HomeTabs" component={HomeTabs} />
         <Stack.Screen name="Produto" component={Produto} />
-
-        
-        {/*<Stack.Screen name="Favoritos" component={Favoritos} />
         <Stack.Screen name="Editar_Cadastro1" component={Editar_Cadastro1} />
         <Stack.Screen name="Editar_Cadastro2" component={Editar_Cadastro2} />
-        <Stack.Screen name="Editar_Cadastro3" component={Editar_Cadastro3} /> */}
+        <Stack.Screen name="Editar_Cadastro3" component={Editar_Cadastro3} /> 
       </Stack.Navigator>
     </NavigationContainer>
 

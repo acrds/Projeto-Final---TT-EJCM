@@ -15,7 +15,7 @@ display: flex;
 flex-direction: row;
 justify-content: space-around;
 align-items:  center;
-padding-left: 15%;
+padding-left: 30%;
 `
 
 export const H1 = styled.Text ` 
@@ -43,7 +43,8 @@ height: ${hp('20%')};`
 export const FotoPerfil = styled.Image`
 width:100px;
 height:100px;
-border-radius: 50%;`
+border-radius: 50%;
+margin-left:20%`
 
 export const Logout = styled.Image`
 width:30px;
