@@ -3,7 +3,6 @@ const faker = require('faker-br');
 
  const seedPartyType = async function () {
    try {
-     await PartyType.sync({ force: true });
 
      for (let i = 0; i < 10; i++) {
 
