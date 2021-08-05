@@ -2,6 +2,7 @@ import React, { useReducer } from 'react';
 import { useState } from 'react';
 import { ImageComponent,  ScrollView, Text , TextInput, View, Button, Alert, StyleSheet, Pressable, TouchableWithoutFeedbackBase, TouchableOpacity} from 'react-native';
 import { BsHeartFill } from "react-icons/bs";
+import { useNavigation } from '@react-navigation/core';
 
 import {Cabecalhofav,
         BackGroundfav,
@@ -36,10 +37,6 @@ export default function Favoritos(){
                 </BackGroundfav>
         
         
-        <Navegacao>
-            
-        </Navegacao>
-        
 
 </ScrollView>
         
@@ -69,19 +66,21 @@ function Cardfav(){
     
     const [buttonPresses,setButtonPresses] = useState(0);
 
+    const navigation = useNavigation();
+
     return( 
         <>
         { listafav.map(favorit => {
             return(
         
         
-        <Fundocardfav key={favorit.id}>
+        <Fundocardfav key={favorit.id} >
                 <Imgfav source={require('../../../assets/bitaimage.png')}/>
                 
                 <Alinhaitens>
                     
                     
-                    <Opcoes >
+                    <Opcoes onPress={() => navigation.navigate('Produto')}>
                     <H1>{favorit.titulo.charAt(0).toUpperCase() + favorit.titulo.slice(1)}</H1>
                         <Textfav>
                         
