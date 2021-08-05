@@ -17,7 +17,7 @@ export default function Login() {
 
     const navegacaoTelaLogin = () => {
         
-        navigation.navigate('Home');
+        navigation.navigate('HomeTabs');
         
     }
 

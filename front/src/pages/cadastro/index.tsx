@@ -2,7 +2,8 @@ import React from 'react';
 import { View, TextInput, Text, TouchableOpacity } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { TextInputMask } from 'react-native-masked-text';
-
+import { useNavigation } from '@react-navigation/native';
+import { BsChevronLeft } from "react-icons/bs";
 import { BackGroundCadastro,
          Baloes,
          Absolute,
@@ -18,9 +19,19 @@ import { BackGroundCadastro,
 export default function Cadastro (){
     const { control, handleSubmit, formState:{errors}, getValues  } = useForm({mode: 'onTouched'});
     
+    const navigation = useNavigation();
+
     const onSubmit = (data:FormData) => {
+        
         console.log(data);
     }
+
+    const navegacaoTela = () => {
+        
+        navigation.navigate('HomeTabs');
+        
+    }
+
 
     interface FormData { 
         email:string;
@@ -30,6 +41,11 @@ export default function Cadastro (){
 
     return (
         <BackGroundCadastro>
+
+            <View>
+                <BsChevronLeft color ={"#073B4C"} size={"30px"}/>
+            </View>
+
             <Absolute>
             <Baloes source={require('../../../assets/baloes.png')}></Baloes>
             </Absolute>
@@ -117,7 +133,7 @@ export default function Cadastro (){
                 </View>
             </Container>
             <ContainerBottom>
-                <Botao onPress={handleSubmit(onSubmit)}>
+                <Botao onPress={handleSubmit(onSubmit, navegacaoTela)}>
                     <ColorBotao>Entrar</ColorBotao>
                 </Botao>
             </ContainerBottom>
