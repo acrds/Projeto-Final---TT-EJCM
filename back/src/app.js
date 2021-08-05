@@ -6,7 +6,6 @@ const app = express();
 const port = process.env.PORT;
 //const cors = require('cors');
 const routes = require('./routes/routes');
-const path = require('path');
 
 const passport = require("passport");
 require("./middlewares/jwtPassport")(passport);
@@ -16,8 +15,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(routes);
 
-
-app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
