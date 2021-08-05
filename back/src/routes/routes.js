@@ -83,6 +83,8 @@ router.get('/products',ProductController.index);
 router.get('/products/:id',ProductController.show);
 router.get('/productsDestroy/:id', adminMiddleware, ProductController.destroy); 
 router.get('/products/:typeId',ProductController.findByType);
+router.get('/products/photo/:id',ProductController.getPhotoProduct);
+router.get('/products/user/:id',ProductController.getProductPoster);
 router.post('/products',ProductController.create);
 router.post('/products/photo/:id', upload.single('photo'),ProductController.addPhotoProduct);
 router.put('/products/:id', ProductController.update);
