@@ -40,7 +40,21 @@ const User = sequelize.define('User', {
 
     moderator: {
         type: DataTypes.BOOLEAN
+    },
+
+    /*inicio alteração*/
+    passwordResetToken: {
+        type: DataTypes.STRING,
+        required: true,
+        select: false
+    },
+
+    passwordResetExpires: {
+        type: DataTypes.DATE,
+        select: false
     }
+
+    /* fim alteração */
 
 }, {
     // timestamps: false
