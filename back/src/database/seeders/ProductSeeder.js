@@ -4,7 +4,6 @@ const PartyType = require("../../models/PartyType");
 
  const seedProduct = async function () {
    try {
-     await Product.sync({ force: true });
 
      for (let i = 0; i < 10; i++) {
 

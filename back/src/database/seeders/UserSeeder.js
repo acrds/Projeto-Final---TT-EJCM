@@ -4,7 +4,6 @@ const faker = require('faker-br');
 
  const seedUser = async function () {
    try {
-     await User.sync({ force: true });
 
      for (let i = 0; i < 10; i++) {
 

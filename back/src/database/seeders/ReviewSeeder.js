@@ -3,7 +3,6 @@ const faker = require('faker-br');
 
  const seedReview = async function () {
    try {
-     await Review.sync({ force: true });
 
      for (let i = 0; i < 10; i++) {
 
