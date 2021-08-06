@@ -21,6 +21,8 @@ import Favoritos from './src/pages/favoritos';
 import Carrinho from './src/pages/carrinho';
 import PaymentMethod from './src/pages/paymentMethod';
 import Compra from './src/pages/compra';
+import AuthProvider from './src/contexts/auth';
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -45,6 +47,7 @@ export default function App() {
   return (
 
     <NavigationContainer >
+      <AuthProvider>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Cadastro" component={Cadastro} />
@@ -57,6 +60,7 @@ export default function App() {
         <Stack.Screen name="Compra" component={Compra}/>
 
       </Stack.Navigator>
+      </AuthProvider>
     </NavigationContainer>
 
   );

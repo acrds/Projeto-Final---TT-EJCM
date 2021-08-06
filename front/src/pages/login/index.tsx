@@ -1,19 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, TextInput, TouchableOpacity, Text, Image } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { BackgroundApp, H1, Label, Botao, Input, Container, TextSenha, ContainerBottom, Underline, Baloes, Absolute, Row } from './styles';
 import { useNavigation } from '@react-navigation/native';
+import api from '../../services/api';
+import AsyncStorage from '@react-native-community/async-storage';
+import {AuthContext}  from '../../contexts/auth'; 
+
+
 
 
 export default function Login() {
+    const Auth = useContext(AuthContext);
     const { control, handleSubmit, formState: { errors } } = useForm({ mode: 'onTouched' });
     
     const navigation = useNavigation();
 
     const onSubmit = (data: FormData) => {
+
+        api.post('/login', data).then(response => {
+            const token = response.data.token;
+            AsyncStorage.setItem('token', token);
+            Auth.setToken('Bearer ' + token);
+            console.log(response);
+            alert('Login feito com sucesso!');
+            navigation.navigate('HomeTabs');
+            
         
-        console.log(data);
-    }
+        }, 
+        (error => ('Login não pode ser concluído.')))
+    }; 
+
 
     const navegacaoTelaLogin = () => {
         
@@ -23,8 +40,9 @@ export default function Login() {
 
     interface FormData {
         email: string;
-        senha: string;
+        password: string;
     }
+
 
     return (
         <BackgroundApp>
@@ -72,10 +90,10 @@ export default function Login() {
                             required: 'a senha é obrigatório.',
 
                         }}
-                        name="senha"
+                        name="password"
                         defaultValue="" />
                 </View>
-                {errors.senha && <Text style={{ color: 'red' }}> {errors.senha.message}</Text>}
+                {errors.password && <Text style={{ color: 'red' }}> {errors.password.message}</Text>}
                 <TouchableOpacity> <TextSenha>Esqueci minha senha</TextSenha></TouchableOpacity>
             </Container>
             <br /><br />

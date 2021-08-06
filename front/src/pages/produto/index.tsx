@@ -11,6 +11,9 @@ import { Absolute } from '../login/styles';
 import { useContext, useEffect, useState } from 'react';
 import ProductService from '../../services/ProductService';
 import UserService from '../../services/UserService';
+import CommentService from '../../services/CommentService';
+
+
 
 interface Product {
     name: string,
@@ -19,9 +22,15 @@ interface Product {
 
 }
 
+interface Comment {
+    id: number;
+    comment: string;
+
+}
 
 
-export default function Produto(props:any) {
+
+export default function Produto(props: any) {
     const { control, handleSubmit, formState: { errors } } = useForm({ mode: 'onTouched' });
 
     const navigation = useNavigation();
@@ -30,21 +39,39 @@ export default function Produto(props:any) {
 
     console.log(event_id);
 
-    const [ user_id , setUserId ] = useState(1); 
-    const [ promoterName, setPromoterName ] = useState();
-    const [ productDetails, setProductDetails ] = useState<Product>();
+    const [user_id, setUserId] = useState(1);
+    const [promoterName, setPromoterName] = useState();
+    const [productDetails, setProductDetails] = useState<Product>();
+
+    
+
+
+
 
     useEffect(() => {
-        ProductService.showProduct(event_id).then( response => {
-            if(response){
+        ProductService.showProduct(event_id).then(response => {
+            if (response) {
                 setProductDetails(response.data)
                 setUserId(response.data.user_id);
-                
+
             }
         })
     }, [event_id])
-    
-    
+
+    const [commentDetails, setCommentDetails] = useState<Comment[]>([]);
+
+    useEffect(() => {
+        CommentService.showComment(event_id).then(response => {
+            if (response) {
+                setCommentDetails(response.data)
+
+            }
+        })
+    }, [event_id])
+
+    console.log(commentDetails);
+
+
     console.log(productDetails);
 
     const onSubmit = (data: FormData) => {
@@ -58,13 +85,13 @@ export default function Produto(props:any) {
         <BackgroundApp>
             <ContainerScroll>
                 <SectionTop>
-                    <TouchableOpacity style ={{marginRight:'85%'}} onPress = {() => navigation.navigate("Home")}>
-                        <BsChevronLeft color={"#073B4C"} size={"30px"}/>
+                    <TouchableOpacity style={{ marginRight: '85%' }} onPress={() => navigation.navigate("Home")}>
+                        <BsChevronLeft color={"#073B4C"} size={"30px"} />
                     </TouchableOpacity>
-                    
+
                 </SectionTop>
                 <ImageProduto source={require('../../../assets/mundoBita.jpg')}></ImageProduto>
-                <Title>{productDetails?.name}</Title> 
+                <Title>{productDetails?.name}</Title>
                 <BackIcon>
                     <TouchableOpacity>
                         <BsHeartFill color={'#EF4767'} size={'24px'}></BsHeartFill>
@@ -120,7 +147,29 @@ export default function Produto(props:any) {
                             <TextEnviar>Enviar</TextEnviar>
                         </ButtonEnviar></Direita>
 
-                    <FotoName>
+                        {commentDetails?.map(servicos => {
+                        return (
+                            <View key={servicos.id}>
+                            <FotoName>
+                                 <PerfilN source={require('../../../assets/camera.png')}></PerfilN>
+                                 <NameN>Tortilha do Raphael</NameN>
+                            </FotoName>
+                            <BackTextComentarioFeito>
+                            <Ex>
+                            <TextComentarioFeito>
+                               {servicos?.comment}
+                            </TextComentarioFeito>
+                            <TouchableOpacity>
+                                <BsX color={'#EF4767'} size={'18px'}></BsX>
+                            </TouchableOpacity>
+                             </Ex>
+                            </BackTextComentarioFeito>
+
+                            </View>
+                        );
+                    })}
+
+                    {/* <FotoName>
                         <PerfilN source={require('../../../assets/camera.png')}></PerfilN>
                         <NameN>Tortilha do Raphael</NameN>
                     </FotoName>
@@ -148,16 +197,16 @@ export default function Produto(props:any) {
                                 <BsX color={'#EF4767'} size={'18px'}></BsX>
                             </TouchableOpacity>
                         </Ex>
-                    </BackTextComentarioFeito>
+                    </BackTextComentarioFeito> */}
 
 
                     <ViewS>
                     </ViewS>
-                    
+
                 </BackComentario>
-                
+
             </ContainerScroll>
-            <View style={{width:'100%', height:'5%', backgroundColor:'#073b4c', position:'absolute', bottom:'0px'}}></View>
+            <View style={{ width: '100%', height: '5%', backgroundColor: '#073b4c', position: 'absolute', bottom: '0px' }}></View>
 
         </BackgroundApp>
     );

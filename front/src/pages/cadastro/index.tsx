@@ -14,6 +14,7 @@ import { BackGroundCadastro,
          Container,
          ContainerBottom,
          ColorBotao} from './styles';
+import api from '../../services/api';
 
 
 export default function Cadastro (){
@@ -21,10 +22,18 @@ export default function Cadastro (){
     
     const navigation = useNavigation();
 
-    const onSubmit = (data:FormData) => {
-        
+    const onSubmit = (data: FormData) => { 
         console.log(data);
-    }
+        
+        api.post('/users', data).then(response => {
+            alert('Cadastro feito com sucesso!')
+            navigation.navigate('Login')
+        }, 
+        (error => ('Cadastro não pode ser concluído.'))) 
+    };
+
+    const onError = (errors: Object) => { console.log(errors) };
+
 
     const navegacaoTela = () => {
         
@@ -35,7 +44,7 @@ export default function Cadastro (){
 
     interface FormData { 
         email:string;
-        senha:string;
+        password:string;
         confirmaSenha:string;
     }
 
@@ -98,12 +107,12 @@ export default function Cadastro (){
                         required: 'A senha é obrigatória'
                         
                     }}
-                    name = 'senha'
+                    name = 'password'
                     defaultValue=''
                     />
-                    {errors.senha && <Text style={{ color:'red'}}>{errors.senha.message}</Text>}
+                    {errors.password && <Text style={{ color:'red'}}>{errors.password.message}</Text>}
                 </View>
-                <View>
+                 <View>
                     <Label>Repita sua senha</Label>
                     <Controller
                         control = {control}
@@ -120,8 +129,8 @@ export default function Cadastro (){
                     rules={{ 
                         validate: {
                             comparaSenhas: (value) => {
-                            const { senha } = getValues();
-                            return senha === value || 'As senhas estão diferentes';
+                            const { password } = getValues();
+                            return password === value || 'As senhas estão diferentes';
                          }
                         }
                        }}
@@ -130,7 +139,7 @@ export default function Cadastro (){
                     defaultValue=''
                     />
                 {errors.confirmarSenha && <Text style={{ color:'red'}}>{errors.confirmarSenha.message}</Text>}
-                </View>
+                </View> 
             </Container>
             <ContainerBottom>
                 <Botao onPress={handleSubmit(onSubmit, navegacaoTela)}>
