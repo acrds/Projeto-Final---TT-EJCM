@@ -73,7 +73,7 @@ margin-top:${hp('1%')};
 
 export const Desc = styled.Text`
 text-align:center;
-font-size:16px;
+font-size:14px;
 
 color:#073b4c;
 font-weight: 700;

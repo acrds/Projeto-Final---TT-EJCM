@@ -140,7 +140,7 @@ export const FundoServico = styled.View`
   
 export const H1 = styled.Text`
     color: #073B4C;
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight:700;
     text-align: left;
     margin-left: -60%;
@@ -150,7 +150,7 @@ export const H1 = styled.Text`
 
 export const TextServico = styled.View`
     font-family: Signika;
-    font-size: 1em;
+    font-size: 0.9em;
     color: #073B4C;
     font-weight:600;
     text-align: left;
@@ -174,7 +174,7 @@ export const Servidor = styled.Text`
 export const FundoProduto = styled.View`
     background-color:#F9E1A4; 
     width: ${wp('40%')};
-    height: ${hp('32%')};
+    height: ${hp('38%')};
     margin-bottom:${hp('20%')};
     margin-left:${wp('0%')};
     padding-bottom:20%;
@@ -205,7 +205,7 @@ export const H1Prod = styled.Text`
 `
 export const TextProd = styled.Text`
     font-family: Signika;
-    font-size: 1em;
+    font-size: 0.9em;
     color: #073B4C;
     font-weight:600;
     text-align: left;
