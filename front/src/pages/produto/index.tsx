@@ -8,12 +8,44 @@ import { BackgroundApp, SectionTop, ImageProduto, Title, BackIcon, TextCategoria
 import { BsChevronLeft } from "react-icons/bs";
 import { useNavigation } from '@react-navigation/core';
 import { Absolute } from '../login/styles';
+import { useContext, useEffect, useState } from 'react';
+import ProductService from '../../services/ProductService';
+import UserService from '../../services/UserService';
+
+interface Product {
+    name: string,
+    description: string,
+    price: number,
+
+}
 
 
-export default function Produto() {
+
+export default function Produto(props:any) {
     const { control, handleSubmit, formState: { errors } } = useForm({ mode: 'onTouched' });
 
     const navigation = useNavigation();
+
+    const event_id = props.route.params.id;
+
+    console.log(event_id);
+
+    const [ user_id , setUserId ] = useState(1); 
+    const [ promoterName, setPromoterName ] = useState();
+    const [ productDetails, setProductDetails ] = useState<Product>();
+
+    useEffect(() => {
+        ProductService.showProduct(event_id).then( response => {
+            if(response){
+                setProductDetails(response.data)
+                setUserId(response.data.user_id);
+                
+            }
+        })
+    }, [event_id])
+    
+    
+    console.log(productDetails);
 
     const onSubmit = (data: FormData) => {
         console.log(data);
@@ -32,20 +64,16 @@ export default function Produto() {
                     
                 </SectionTop>
                 <ImageProduto source={require('../../../assets/mundoBita.jpg')}></ImageProduto>
-                <Title>Cup Cakes mundo Bita</Title>
+                <Title>{productDetails?.name}</Title> 
                 <BackIcon>
                     <TouchableOpacity>
                         <BsHeartFill color={'#EF4767'} size={'24px'}></BsHeartFill>
                     </TouchableOpacity>
-                    <TextCategoria> Festa Infantil</TextCategoria>
+                    <TextCategoria>Indefinido</TextCategoria>
                 </BackIcon>
                 <BackText>
                     <Desc>
-                        Cupcakes deliciosos e bem<br />
-                        confeitados do jeito que você<br />
-                        procura para a sua festa. Tudo é<br />
-                        bem feito para o seu evento ser<br />
-                        perfeito.
+                        {productDetails?.description}
 
                     </Desc>
 
@@ -53,7 +81,7 @@ export default function Produto() {
                 <Location><BiMap color={'#073b4c'}></BiMap><LocationText>Rio de Janeiro</LocationText></Location>
                 <Anunciado>Anunciado por Cups de Gabi</Anunciado>
                 <BackPreco>
-                    <TextPreco>R$ 10,00</TextPreco>
+                    <TextPreco>R${productDetails?.price}</TextPreco>
                     <Carrinho>
                         <TextCarrinho>
                             Adicionar ao
