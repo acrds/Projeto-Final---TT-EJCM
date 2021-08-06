@@ -6,6 +6,8 @@ const seedPartyType = require('./PartyTypeSeeder');
 const seedProduct = require('./ProductSeeder');
 const seedReview = require('./ReviewSeeder');
 const sequelize = require('../../config/sequelize');
+const seedSale = require('./SaleSeeder');
+const seedShoplist = require('./ShopListSeeder');
 
 (async () => {
   try {
@@ -15,6 +17,8 @@ const sequelize = require('../../config/sequelize');
     await seedPartyType();
     await seedProduct();
     await seedReview();
+    await seedShoplist();
+    await seedSale();
 
   } catch(err) { console.log(err) }
 })();
