@@ -3,8 +3,9 @@ import { View, TextInput, TouchableOpacity, Text, Image } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { TextInputMask } from 'react-native-masked-text'
 import { FiArrowLeft } from 'react-icons/fi'
-import { BackgroundApp, SectionTop, H1, H2, ButtonCancelar, TextCancelar, BackCinza, TextRosa, Label, Input, BackForm, BackCenter, ButtonEnviar, TextEnviar, Camera, TextSelecionar, ButtonSelecionar, ViewS, ContainerScroll, BackTitle, SectionBottom, Absolute, Confete, Row, Ball, BallS } from './styles'
-
+import { BackgroundApp, SectionTop, H1, H2, Label, Input, BackForm, BackCenter, ButtonEnviar, TextEnviar, Camera, TextSelecionar, ButtonSelecionar, ViewS, ContainerScroll, BackTitle, SectionBottom, Absolute, Confete, Row, Ball, BallS } from './styles'
+import { useNavigation } from '@react-navigation/native';
+import { BsChevronLeft } from "react-icons/bs";
 
 export default function Editar_Cadastro1 () {
     const {control, handleSubmit, formState: {errors} } = useForm({ mode:'onTouched'});
@@ -20,14 +21,22 @@ export default function Editar_Cadastro1 () {
         preco: string;
     }
 
+    const navigation= useNavigation();
+
+    const navegacaoTela = () => {
+        
+        navigation.navigate('Editar_Cadastro2');
+        
+    }
+
+    
     return(
 
        <BackgroundApp>
 	
            <SectionTop>
          
-          <TouchableOpacity> <FiArrowLeft size={'20px'}>
-           </FiArrowLeft></TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Perfil')}> <BsChevronLeft color ={"#073B4C"} size={"30px"}/></TouchableOpacity>
                <H1>Dados da Conta</H1>
            </SectionTop>
 
@@ -94,7 +103,7 @@ export default function Editar_Cadastro1 () {
         <BackCenter>
                
         
-            <ButtonEnviar onPress={handleSubmit(onSubmit)}>
+            <ButtonEnviar onPress={handleSubmit(onSubmit, navegacaoTela)}>
                 <TextEnviar>Próximo</TextEnviar>
             </ButtonEnviar>
 <Row>

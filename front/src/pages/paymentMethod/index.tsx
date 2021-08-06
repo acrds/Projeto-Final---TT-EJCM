@@ -3,6 +3,7 @@ import { ImageComponent,  ScrollView, Text , TextInput, View, Button, Alert, Sty
 import { BsChevronLeft } from "react-icons/bs";
 import { BiMoney } from "react-icons/bi";
 import { BiCreditCard } from "react-icons/bi";
+import { useNavigation } from '@react-navigation/core';
 
 
 import {CabecalhoPay,
@@ -28,10 +29,12 @@ import {CabecalhoPay,
 import { Navegacao } from '../home/styles';
 
 export default function PaymentMethod(){
+    const navigation = useNavigation();
+
     return(
     <View>
         <CabecalhoPay>
-            <Botaovoltar><BsChevronLeft color={"#073B4C"} size={'30px'}/></Botaovoltar>
+            <Botaovoltar onPress={() => navigation.navigate('Carrinho')}><BsChevronLeft color={"#073B4C"} size={'30px'}/></Botaovoltar>
         </CabecalhoPay>
 
         <BackGroundPay>
@@ -42,16 +45,16 @@ export default function PaymentMethod(){
                 <TextoPagEntrega>Pagamento na entrega</TextoPagEntrega>
             </ViewPagEntrega>
             
-            <ViewDinheiro>
+            <ViewDinheiro onPress={() => navigation.navigate('Carrinho')}>
                 <TextoDinheiro>Dinheiro</TextoDinheiro>
                 <BiMoney color={'#073B4C'} size={'25px'}/>
             
             </ViewDinheiro>
-            <ViewCredito>
+            <ViewCredito onPress={() => navigation.navigate('Carrinho')}>
                 <TextoCredito>Crédito</TextoCredito>
                 <BiCreditCard color={'#073B4C'} size={'25px'}/>
             </ViewCredito>
-            <ViewDebito>
+            <ViewDebito onPress={() => navigation.navigate('Carrinho')}>
                 <TextoDebito>Débito</TextoDebito>
                 <BiCreditCard color={'#073B4C'} size={'25px'}/>
             </ViewDebito>

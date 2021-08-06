@@ -1,181 +1,187 @@
 import React from 'react';
-import { ImageComponent, ScrollView, Text , TextInput, View} from 'react-native';
+import { ImageComponent, ScrollView, Text, TextInput, View } from 'react-native';
 import { FaSistrix } from "react-icons/fa";
 
+import { useNavigation } from '@react-navigation/native';
 
-import { BackGroundHome,
-         Cabecalho,
-         Navegacao,
-         Label,
-         ImgServico,
-         H1,
-         Servidor,
-         FundoServico,
-         FundoProduto,
-         ImgProduto,
-         Barrabusca,
-         TextServico,
-         ImageBusca,
-         H1Prod,
-         TextProd,
-         ServidorProd,
-         ContainerScrollCat,
-         Busca
-        
-         } from './styles';
+
+
+import {
+    BackGroundHome,
+    Cabecalho,
+    Navegacao,
+    Label,
+    ImgServico,
+    H1,
+    Servidor,
+    FundoServico,
+    FundoProduto,
+    ImgProduto,
+    Barrabusca,
+    TextServico,
+    ImageBusca,
+    H1Prod,
+    TextProd,
+    ServidorProd,
+    ContainerScrollCat,
+    Busca
+
+} from './styles';
 
 import { ContainerScroll, Opcoes, ImgCategoria, Titulo } from './styles';
 
 
 
-export default function Home(){
+export default function Home() {
 
+    const navigation = useNavigation();
 
-    return(
+    return (
         <>
-    <ScrollView>
-        
+            <ScrollView>
+
                 <Cabecalho>
 
-                   <Busca>
-                        <Barrabusca/>
-                        <FaSistrix color={'#073B4C'}/>
+                    <Busca>
+                        <Barrabusca />
+                        <FaSistrix color={'#073B4C'} />
                     </Busca>
                 </Cabecalho>
 
 
                 <BackGroundHome>
 
-                    <Categorias/>
+                    <Categorias />
                     <Label>Serviços</Label>
-                    <CardServico/>
+                    <CardServico />
                     <Label>Produtos</Label>
-                    <CardProduto/>
+                    <CardProduto />
                 </BackGroundHome>
-        
-        
-        <Navegacao>
-            
-        </Navegacao>
-        
 
-</ScrollView>
-</>
-        
-    )};
+
+            </ScrollView>
+        </>
+
+    )
+};
 
 
 
 
-function Categorias (){
-    const listCategoria = ['infantil','formatura','casamento','junina',
-    'fantasia','aniversario', 'ano-novo']
+function Categorias() {
+    const listCategoria = ['infantil', 'formatura', 'casamento', 'junina',
+        'fantasia', 'aniversario', 'ano-novo']
 
-        return(
-            <>
+    return (
+        <>
             <ContainerScrollCat>
- 
- { listCategoria.map(categoria => {
-     return(
-        <Opcoes key={categoria}>
-        <ImgCategoria source={require(`../../../assets/${categoria}.png`)}/>
-        <Titulo>{categoria.charAt(0).toUpperCase() + categoria.slice(1)}</Titulo>
-        </Opcoes>
-     )
- }) 
-}
-              </ContainerScrollCat>
-    </>
+
+                {listCategoria.map(categoria => {
+                    return (
+                        <Opcoes key={categoria}>
+                            <ImgCategoria source={require(`../../../assets/${categoria}.png`)} />
+                            <Titulo>{categoria.charAt(0).toUpperCase() + categoria.slice(1)}</Titulo>
+                        </Opcoes>
+                    )
+                })
+                }
+            </ContainerScrollCat>
+        </>
     );
 }
 
-function CardServico(){
-    
+function CardServico() {
+
     const listaServicos = [
         {
-          id: 0,
-          titulo: 'titulo do produto',
-          preco: 55.6,
-          anunciante: 'Fulano de tal',
-          local: 'Rio de Janeiro',
-          imagem: '../../../assets/escorrega.png'
+            id: 0,
+            titulo: 'titulo do produto',
+            preco: 55.6,
+            anunciante: 'Fulano de tal',
+            local: 'Rio de Janeiro',
+            imagem: '../../../assets/escorrega.png'
         },
         {
-          id: 1,
-          titulo: 'outro produto',
-          preco: 20,
-          anunciante: 'Outro Fulano',
-          local: 'Mangaratiba',
-          imagem:'../../../assets/escorrega.png'
+            id: 1,
+            titulo: 'outro produto',
+            preco: 20,
+            anunciante: 'Outro Fulano',
+            local: 'Mangaratiba',
+            imagem: '../../../assets/escorrega.png'
         },
-      ];
-    
+    ];
 
-    return( 
-    
-    <ContainerScroll>
-        { listaServicos.map(servicos => {
-            return(
-        
-        <Opcoes key={servicos.id}>
-            <FundoServico>
-                <ImgServico source={require('../../../assets/escorrega.png')}/>
-                <H1>{servicos.titulo.charAt(0).toUpperCase() + servicos.titulo.slice(1)}</H1>
-                    <TextServico>
-                        {`${servicos.local} . R$ ${servicos.preco}`}
-                        
-                    </TextServico>
-                <Servidor>{`Vendido por: ${servicos.anunciante}`}</Servidor>
-            </FundoServico>
-        </Opcoes>
-        
-            )})}
+    const navigation= useNavigation();
+    return (
 
-     </ContainerScroll>
-    )};
+        <ContainerScroll>
+            {listaServicos.map(servicos => {
+                return (
+
+                    <Opcoes key={servicos.id} onPress={() => navigation.navigate('Produto')} >
+                        <FundoServico > 
+                            <ImgServico source={require('../../../assets/escorrega.png')} />
+                            <H1>{servicos.titulo.charAt(0).toUpperCase() + servicos.titulo.slice(1)}</H1>
+                            <TextServico>
+                                {`${servicos.local} . R$ ${servicos.preco}`}
+
+                            </TextServico>
+                            <Servidor>{`Vendido por: ${servicos.anunciante}`}</Servidor>
+                        </FundoServico>
+                    </Opcoes>
+
+                )
+            })}
+
+        </ContainerScroll>
+    )
+};
 
 
-function CardProduto(){
-    
+function CardProduto() {
+
     const listaProdutos = [
         {
-          id: 0,
-          titulo: 'titulo do produto',
-          preco: 55.6,
-          anunciante: 'Fulano de tal',
-          local: 'Rio de Janeiro',
-          imagem: '../../../assets/escorrega.png'
+            id: 0,
+            titulo: 'titulo do produto',
+            preco: 55.6,
+            anunciante: 'Fulano de tal',
+            local: 'Rio de Janeiro',
+            imagem: '../../../assets/escorrega.png'
         },
         {
-          id: 1,
-          titulo: 'outro produto',
-          preco: 20,
-          anunciante: 'Outro Fulano',
-          local: 'Mangaratiba',
-          imagem:'../../../assets/escorrega.png'
+            id: 1,
+            titulo: 'outro produto',
+            preco: 20,
+            anunciante: 'Outro Fulano',
+            local: 'Mangaratiba',
+            imagem: '../../../assets/escorrega.png'
         },
-      ];
-    
+    ];
 
-    return( 
-    
-    <ContainerScroll>
-        { listaProdutos.map(produtos => {
-            return(
-        <Opcoes key={produtos.id}>
+    const navigation= useNavigation();
 
-            {<FundoProduto>
-                <ImgProduto source={require('../../../assets/copo.png')}/>
-                <H1Prod>{produtos.titulo.charAt(0).toUpperCase() + produtos.titulo.slice(1)}</H1Prod>
-                    <TextProd>
-                        <Text>{`R$ ${produtos.preco}`}</Text>
-                         
-                    </TextProd>
-                <ServidorProd>{`Vendido por: ${produtos.anunciante}`}</ServidorProd>
-            </FundoProduto>}
-        </Opcoes>
-            )})}
+    return (
 
-     </ContainerScroll>
-    )};
+        <ContainerScroll>
+            {listaProdutos.map(produtos => {
+                return (
+                    <Opcoes key={produtos.id} onPress={() => navigation.navigate('Produto')}>
+
+                        {<FundoProduto>
+                            <ImgProduto source={require('../../../assets/copo.png')} />
+                            <H1Prod>{produtos.titulo.charAt(0).toUpperCase() + produtos.titulo.slice(1)}</H1Prod>
+                            <TextProd>
+                                <Text>{`R$ ${produtos.preco}`}</Text>
+
+                            </TextProd>
+                            <ServidorProd>{`Vendido por: ${produtos.anunciante}`}</ServidorProd>
+                        </FundoProduto>}
+                    </Opcoes>
+                )
+            })}
+
+        </ContainerScroll>
+    )
+};
 

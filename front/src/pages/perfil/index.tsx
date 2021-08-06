@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, TextInput, TouchableOpacity, Text, Image } from 'react-native';
 import { BackgroundApp, SectionTop, H1, BackFoto, GroupCenter, FotoPerfil, BackInfo, TextFixo, TextMutavel, Row, BackButtons, ButtonAtualizar, ButtonExcluir, TextAtualizar, TextExcluir, FotoCamera, Logout } from './styles'
-
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function Perfil () {
-
+    const navigation= useNavigation();
         return(
             <BackgroundApp>
                 <SectionTop>
@@ -31,10 +31,10 @@ export default function Perfil () {
                 </BackInfo>
                 
             <BackButtons>
-                <ButtonAtualizar>
+                <ButtonAtualizar onPress={() => navigation.navigate('Editar_Cadastro1')}>
                     <TextAtualizar>Atualizar</TextAtualizar>
                 </ButtonAtualizar>
-                <ButtonExcluir>
+                <ButtonExcluir onPress={() => navigation.navigate('Home')}>
                     <TextExcluir>
                         Excluir conta
                     </TextExcluir>

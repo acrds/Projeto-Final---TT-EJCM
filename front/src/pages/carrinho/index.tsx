@@ -4,6 +4,7 @@ import { BsTrashFill , BsCircleFill} from "react-icons/bs";
 import { BsPlus } from "react-icons/bs";
 import {FiMinus} from 'react-icons/fi';
 import { BsArrowRight } from "react-icons/bs";
+import { useNavigation } from '@react-navigation/core';
 
 
 import {Cabecalhocar,
@@ -48,6 +49,8 @@ import {Cabecalhocar,
 
 
 export default function Favoritos(){
+    const navigation = useNavigation();
+
     return (
 
     <ScrollView>
@@ -106,15 +109,13 @@ export default function Favoritos(){
                   </ResumoFrete>
             </View>
 
-            <BotaoFormaPagamento>
+            <BotaoFormaPagamento onPress={() => navigation.navigate('PaymentMethod')}>
 
                 <TextoFormaPagamento>Forma de pagamento</TextoFormaPagamento>
                 <IconeFormaPagamento><BsArrowRight color={'#118AB2'} size={'30px'}/></IconeFormaPagamento>
             </BotaoFormaPagamento>
-            <BotaoConcluir>Concluir</BotaoConcluir>
+            <BotaoConcluir onPress={() => navigation.navigate('Compra')}>Concluir</BotaoConcluir>
         </Backgroundcar>
-        <Navegacao>
-    
-        </Navegacao>
+        
     </ScrollView>
 )}
