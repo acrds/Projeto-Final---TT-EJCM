@@ -31,6 +31,7 @@ const upload = multer({ storage: storage,
  });
 
 
+
 router.get('/users',UserController.index);
 router.get('/users/:id',UserController.show);
 router.get('/listShop/:id', UserController.listedShop);
@@ -57,14 +58,12 @@ router.delete('/users/:id', UserController.destroy);
 router.delete('/photo/:id', UserController.removePhoto);
 
 
-
 router.get('/reviews',ReviewController.index);
 router.get('/reviews/:id',ReviewController.show);
 router.post('/reviews',ReviewController.create);
 router.put('/reviews/:id', ReviewController.update);
 router.get('/reviews/:id', adminMiddleware, ReviewController.destroy); 
 router.delete('/reviews/:id', ReviewController.destroy)
-
 
 
 router.get('/partyTypes',PartyTypeController.index);
@@ -77,6 +76,8 @@ router.delete('/partyTypes/:id', PartyTypeController.destroy)
 
 router.get('/private/getDetails', AuthController.getDetails);
 router.post('/login', AuthController.login);
+router.post('/forgot_password', AuthController.forgot_password);
+router.post('/reset_password', AuthController.reset_password);
 
 
 router.get('/products',ProductController.index);

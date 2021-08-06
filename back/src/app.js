@@ -6,6 +6,7 @@ const app = express();
 const port = process.env.PORT;
 const cors = require('cors');
 const routes = require('./routes/routes');
+
 const passport = require("passport");
 require("./middlewares/jwtPassport")(passport);
 app.use(passport.initialize());

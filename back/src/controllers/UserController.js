@@ -1,18 +1,19 @@
 const { response } = require('express');
+require('../config/dotenv')();
+
 const ShopList = require('../models/ShopList');
 const User = require('../models/User');
 const Product = require('../models/Product');
-const Auth = require("../config/auth"); // Faltou aqui
+const Auth = require("../config/auth");
 const Product_ShopList = require('../models/Product_Shoplist');
 const {validationResult} = require('express-validator');
 const Photo = require('../models/Photo');
-require('../config/dotenv')();
 const fsPromise = require('fs').promises;
 const path = require('path');
 const mailer = require('../config/mail').mailer;
 const readHtml = require("../config/mail").readHTMLFile;
 const hbs = require("handlebars");
-const Review = require('../models/Review'); // Faltou AQUI
+const Review = require('../models/Review');
 
 
 const create = async(req,res) => {
@@ -33,7 +34,7 @@ const create = async(req,res) => {
         readHtml(path.join(pathTemplate, "cadastro.html"), (err,html)=>{
             const template = hbs.compile(html);
             const replacements = {
-                name: user.name
+                email: user.email
             };
             const htmlToSend = template(replacements);
             const message = {
