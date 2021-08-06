@@ -55,7 +55,7 @@ export const Imgfav = styled.Image`
 
 export const H1 = styled.Text`
     color: #073B4C;
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-family: Signika;
     margin-bottom: 2%;
     font-weight:700;
