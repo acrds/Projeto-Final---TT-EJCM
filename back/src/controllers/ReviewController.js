@@ -7,7 +7,7 @@ const create = async(req,res) => {
           if(req.body.userId && req.body.productId){
             const review = await Review.create(req.body);
             console.log(req.body); 
-            return res.status(201).json({message: "Review cadastrada com sucesso!", Review: review});
+            return res.status(201).json(review);
           }   
           throw new Error();
       }catch(err){
@@ -18,7 +18,7 @@ const create = async(req,res) => {
 const index = async(req,res) => {
     try {
         const reviews = await Review.findAll();
-        return res.status(200).json({message: "Reviews encontradas.", reviews});
+        return res.status(200).json(reviews);
     }catch(err){
         return res.status(500).json({err, message: "Reviews não encontradas."});
     }
@@ -28,7 +28,7 @@ const show = async(req,res) => {
     const {id} = req.params;
     try {
         const review = await Review.findByPk(id);
-        return res.status(200).json({message: "Review encontrada.", review});
+        return res.status(200).json(review);
     }catch(err){
         return res.status(500).json({err, message: "Review não encontrada."});
     }

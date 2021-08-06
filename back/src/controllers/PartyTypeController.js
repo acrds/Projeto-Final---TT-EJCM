@@ -4,7 +4,7 @@ const PartyType = require('../models/PartyType');
 const create = async(req,res) => {
     try{
           const partyType = await PartyType.create(req.body);
-          return res.status(201).json({message: "Party Type cadastrada com sucesso!", PartyType: partyType});
+          return res.status(201).json(partyType);
       }catch(err){
           res.status(500).json({error: err, message: "Erro ao criar nova Party Type."});
       }
@@ -13,7 +13,7 @@ const create = async(req,res) => {
 const index = async(req,res) => {
     try {
         const partyTypes = await PartyType.findAll();
-        return res.status(200).json({message: "Party Types encontradas.", partyTypes});
+        return res.status(200).json(partyTypes);
     }catch(err){
         return res.status(500).json({err, message: "Party Types não encontradas."});
     }
@@ -23,7 +23,7 @@ const show = async(req,res) => {
     const {id} = req.params;
     try {
         const partyType = await PartyType.findByPk(id);
-        return res.status(200).json({message: "Party Type encontrada.", partyType});
+        return res.status(200).json(partyType);
     }catch(err){
         return res.status(500).json({err, message: "Party Type não encontrada."});
     }
