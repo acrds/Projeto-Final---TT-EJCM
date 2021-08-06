@@ -1,17 +1,24 @@
 const {response} = require ('express');
+const {validationResult} = require('express-validator');
+const Product = require('../models/Product');
 const Review = require('../models/Review');
+const User = require('../models/User');
 
 const create = async(req,res) => {
     try{
           validationResult(req).throw();     
           if(req.body.userId && req.body.productId){
             const review = await Review.create(req.body);
+            const user = await User.findByPk(req.body.userId);
+            await review.setUser(user);
+            const product = await Product.findByPk(req.body.productId);
+            await review.setProduct(product);
             console.log(req.body); 
             return res.status(201).json(review);
           }   
           throw new Error();
       }catch(err){
-          res.status(500).json({error: err, message: "Erro ao criar Review."});
+          res.status(500).json({error: err + "!", message: "Erro ao criar Review."});
       } 
 };
 
