@@ -4,6 +4,7 @@ const Photo = require('../models/Photo');
 require('../config/dotenv')();
 const fsPromise = require('fs').promises;
 const path = require('path');
+const Review = require('../models/Review');
 
 
 const index = async(req,res) => {
@@ -151,6 +152,16 @@ const getProductPoster = async(req, res) => {
     }
 };
 
+const getComments = async(req,res) => {
+    try{
+        const {id} = req.params;
+		const comments  = await Review.findAll({where: {productId: id}});
+        return res.status(200).json(comments);
+    } catch (err){
+        return res.status(500).json(e + "!");
+    }
+}
+
 module.exports = {
     index,
     show,
@@ -163,5 +174,6 @@ module.exports = {
     addPhotoProduct,
     removePhoto,
     getPhotoProduct,
-    getProductPoster
+    getProductPoster,
+    getComments
 };
