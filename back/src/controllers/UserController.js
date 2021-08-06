@@ -47,7 +47,7 @@ const create = async(req,res) => {
                 console.log(err + "!");
             });
         });
-        return res.status(201).json({user});
+        return res.status(201).json(user);
     } catch (err) {
         return res.status(500).json(err + "!");
     }
@@ -58,7 +58,7 @@ const index = async(req,res) => {
         const users = await User.findAll();
         return res.status(200).json({message: "Usuários foram encontrados!", users});
     }catch(err){
-        return res.status(500).json({err});
+        return res.status(500).json(err);
     }
 };
 
@@ -69,7 +69,7 @@ const show = async(req,res) => {
         const user = await User.findByPk(id);
         return res.status(200).json({message: "Usuário foi encontrado!", user});
     }catch(err){
-        return res.status(500).json({err});
+        return res.status(500).json(err);
     }
 };
 
@@ -185,7 +185,7 @@ const listedShop = async(req,res) => {
     try{
         const user = await User.findByPk(id);
         const putOn = await user.getShopList(); 
-        return res.status(200).json({putOn});
+        return res.status(200).json(putOn);
     }catch(err){
         return res.status(500),json("Erro");
     }
@@ -227,7 +227,7 @@ const listPostedProducts = async(req,res) => { //listar produtos anunciados
     try{
         const user = await User.findByPk(id);
         const postProduct = await user.getProducts(); 
-        return res.status(200).json({postProduct});
+        return res.status(200).json(postProduct);
     }catch(err){
         return res.status(500),json("Erro");
     }
@@ -268,7 +268,7 @@ const listMadeReviews = async(req,res) => {
     try{
         const user = await User.findByPk(id);
         const makeReview = await user.getReviews(); 
-        return res.status(200).json({makeReview});
+        return res.status(200).json(makeReview);
     }catch(err){
         return res.status(500),json("Erro");
     }
@@ -282,7 +282,7 @@ const favorite = async(req,res) => {
         await user.addFavorite_product(productFavorited);
         return res.status(200).json(user);
     }catch(err){
-        return res.status(500).json({err});
+        return res.status(500).json(err);
     }
 };
 
@@ -294,7 +294,7 @@ const disfavor = async(req,res) => {
         await user.removeFavorite_product(productFavorited);
         return res.status(200).json(user);
     }catch(err){
-        return res.status(500).json({err});
+        return res.status(500).json(err);
     }
 };
 
@@ -303,9 +303,9 @@ const listFavorited = async(req,res) => {
     try{
         const user = await User.findByPk(id);
         const listFavoriteds = await user.getFavorite_product();
-        return res.status(200).json({listFavoriteds});
+        return res.status(200).json(listFavoriteds);
     }catch(err){
-        return res.status(500).json({err});
+        return res.status(500).json(err);
     }
 };
 
@@ -345,6 +345,17 @@ const removePhoto = async(req, res) => {
 	}
 };
 
+const getPhotoUser = async(req,res) =>{
+
+    try {
+        const {id} =req.params;
+        const user = await User.findByPk(id);
+        const photo = await user.getPhoto();
+        return res.status(200).json(photo.path);
+    }catch (e) {
+		return res.status(500).json(e + "!");
+	}
+};
 
 module.exports = {
     create,
@@ -366,7 +377,8 @@ module.exports = {
     listFavorited,
     updateQtdProduct,
     addPhotoUser,
-    removePhoto
+    removePhoto,
+    getPhotoUser
    
    
 };

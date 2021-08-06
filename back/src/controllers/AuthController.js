@@ -1,13 +1,5 @@
 const User = require("../models/User");
 const Auth = require("../config/auth");
-const crypto = require('crypto');
-const nodemailer = require('nodemailer');
-const { mailer } = require("../config/mail");
-const readHtml = require("../config/mail").readHTMLFile;
-const hbs = require("handlebars");
-const path = require('path');
-const jwt = require('jsonwebtoken');
-
 
 const login = async (req, res) => {
 	try {
@@ -17,12 +9,12 @@ const login = async (req, res) => {
 		const { password } = req.body;
 		if (Auth.checkPassword(password, user.hash, user.salt)) {
 			const token = Auth.generateJWT(user);
-			return res.status(200).json({ token: token });
+			return res.status(200).json(token);
 		} else {
 			return res.status(401).json({ message: "Senha invalida" });
 		}
 	} catch (e) {
-		return res.status(500).json({ err: e })
+		return res.status(500).json(e)
 	}
 };
 
@@ -33,9 +25,9 @@ const getDetails = async (req, res) => {
 		const user = await User.findByPk(payload.sub);
 		if (!user)
 			return res.status(404).json({ message: "Usuario não encontrado." });
-		return res.status(200).json({ user: user });
+		return res.status(200).json(user);
 	} catch (e) {
-		return res.status(500).json({ err: e })
+		return res.status(500).json(e)
 	}
 };
 
